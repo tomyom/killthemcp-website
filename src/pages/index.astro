@@ -1,0 +1,419 @@
+---
+const clis = [
+  {
+    name: 'Billingo',
+    package: '@ktmcp-cli/billingo',
+    description: 'Hungarian invoicing and billing API',
+    github: 'https://github.com/ktmcp-cli/billingo',
+    category: 'Finance'
+  },
+  {
+    name: 'NOWPayments',
+    package: '@ktmcp-cli/nowpayments',
+    description: 'Cryptocurrency payment processing',
+    github: 'https://github.com/ktmcp-cli/nowpayments',
+    category: 'Finance'
+  },
+  {
+    name: 'Nordigen',
+    package: '@ktmcp-cli/nordigen',
+    description: 'Open banking account information',
+    github: 'https://github.com/ktmcp-cli/nordigen',
+    category: 'Finance'
+  },
+  {
+    name: 'Klarna',
+    package: '@ktmcp-cli/klarna',
+    description: 'Payment processing platform',
+    github: 'https://github.com/ktmcp-cli/klarna',
+    category: 'Finance'
+  },
+  {
+    name: 'Codat',
+    package: '@ktmcp-cli/codat',
+    description: 'Unified accounting data from 20+ platforms',
+    github: 'https://github.com/ktmcp-cli/codat',
+    category: 'Finance'
+  }
+];
+
+const stats = {
+  clis: clis.length,
+  apis: clis.length,
+  lines: '~10,000',
+  docs: '133+'
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Kill The MCP - Production CLIs for APIs Without CLIs</title>
+    <meta name="description" content="Automated system generating production-ready command-line tools for APIs. 5 CLIs/day. Real TypeScript. No MCP needed." />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #0a0a0a;
+        --fg: #ffffff;
+        --accent: #00ff88;
+        --accent-dim: #00aa55;
+        --border: #222;
+        --card-bg: #111;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      header {
+        text-align: center;
+        padding: 4rem 0;
+        border-bottom: 2px solid var(--accent);
+        margin-bottom: 4rem;
+      }
+
+      h1 {
+        font-size: 4rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--accent), #00ccff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tagline {
+        font-size: 1.5rem;
+        color: #888;
+        margin-bottom: 2rem;
+      }
+
+      .hero-cta {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--accent);
+        color: var(--bg);
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        transition: transform 0.2s;
+      }
+
+      .hero-cta:hover {
+        transform: translateY(-2px);
+        background: #00ffaa;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 4rem 0;
+      }
+
+      .stat {
+        text-align: center;
+        padding: 2rem;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+
+      .stat-value {
+        font-size: 3rem;
+        font-weight: bold;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        color: #888;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .clis-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 4rem 0;
+      }
+
+      .cli-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: border-color 0.3s, transform 0.3s;
+      }
+
+      .cli-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+      }
+
+      .cli-name {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--accent);
+      }
+
+      .cli-package {
+        font-family: 'Courier New', monospace;
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .cli-description {
+        color: #ccc;
+        margin-bottom: 1.5rem;
+      }
+
+      .cli-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .cli-link {
+        padding: 0.5rem 1rem;
+        background: var(--border);
+        color: var(--fg);
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+      }
+
+      .cli-link:hover {
+        background: var(--accent-dim);
+        color: var(--bg);
+      }
+
+      .why-section {
+        background: var(--card-bg);
+        border: 2px solid var(--accent);
+        border-radius: 12px;
+        padding: 3rem;
+        margin: 4rem 0;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .why-item {
+        padding: 1.5rem;
+        background: rgba(0, 255, 136, 0.05);
+        border-radius: 8px;
+      }
+
+      .why-item h3 {
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+      }
+
+      .why-item p {
+        color: #aaa;
+      }
+
+      code {
+        background: var(--border);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+      }
+
+      pre {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.5rem;
+        overflow-x: auto;
+        margin: 2rem 0;
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+      }
+
+      footer {
+        text-align: center;
+        padding: 4rem 0 2rem;
+        color: #666;
+        border-top: 1px solid var(--border);
+        margin-top: 4rem;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--accent-dim);
+        color: var(--bg);
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img src="/logo.png" alt="KTMCP Logo" style="width: 200px; height: 200px; margin: 0 auto 2rem; display: block; border-radius: 20px;" />
+        <h1>Kill The MCP</h1>
+        <p class="tagline">Production CLIs for APIs Without CLIs</p>
+        <p style="color: #666; margin-bottom: 2rem;">
+          Automated system generating 5 production-ready command-line tools daily.<br />
+          Real TypeScript. Real code. No MCP abstraction needed.
+        </p>
+        <a href="https://github.com/ktmcp-cli" class="hero-cta">View on GitHub →</a>
+      </header>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value">{stats.clis}</div>
+          <div class="stat-label">CLIs Published</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{stats.lines}</div>
+          <div class="stat-label">Lines of Code</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{stats.docs}</div>
+          <div class="stat-label">Documentation Files</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">5/day</div>
+          <div class="stat-label">Generation Rate</div>
+        </div>
+      </div>
+
+      <section class="why-section">
+        <h2>Why CLI > MCP?</h2>
+        <div class="why-grid">
+          <div class="why-item">
+            <h3>⚡ Faster</h3>
+            <p>Direct API calls. No server overhead. No abstraction layers. Just raw performance.</p>
+          </div>
+          <div class="why-item">
+            <h3>💰 Cheaper</h3>
+            <p>No server costs. No token usage for every operation. Run locally, pay nothing.</p>
+          </div>
+          <div class="why-item">
+            <h3>🎯 Simpler</h3>
+            <p>Standard Unix philosophy. Pipe, redirect, compose. No new abstractions to learn.</p>
+          </div>
+          <div class="why-item">
+            <h3>🔒 Deterministic</h3>
+            <p>Same input, same output. Every time. No AI unpredictability in your workflows.</p>
+          </div>
+          <div class="why-item">
+            <h3>🛠️ Debuggable</h3>
+            <p>See exactly what's happening. Full control. No black box between you and the API.</p>
+          </div>
+          <div class="why-item">
+            <h3>📦 Portable</h3>
+            <p>Works anywhere Node.js runs. No special runtime. No server dependencies.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Available CLIs</h2>
+        <div class="clis-grid">
+          {clis.map(cli => (
+            <div class="cli-card">
+              <div class="badge">{cli.category}</div>
+              <div class="cli-name">{cli.name}</div>
+              <div class="cli-package">{cli.package}</div>
+              <div class="cli-description">{cli.description}</div>
+              <div class="cli-links">
+                <a href={cli.github} class="cli-link">GitHub</a>
+                <a href={`https://www.npmjs.com/package/${cli.package}`} class="cli-link">npm</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style="margin: 4rem 0;">
+        <h2>Quick Start</h2>
+        <pre><code># Install any CLI
+npm install -g @ktmcp-cli/nordigen
+
+# Authenticate
+nordigen auth login --secret-id YOUR_ID --secret-key YOUR_KEY
+
+# Use it
+nordigen institutions list --country GB
+nordigen accounts list COMPANY_ID --format json
+
+# Pipe and compose
+nordigen accounts transactions ACCOUNT_ID | jq '.transactions[] | select(.amount > 1000)'</code></pre>
+      </section>
+
+      <section class="why-section">
+        <h2>Every CLI Includes</h2>
+        <div style="display: grid; gap: 1rem; margin-top: 2rem;">
+          <div style="padding: 1rem; background: rgba(0,255,136,0.05); border-radius: 8px;">
+            <strong>📖 README.md</strong> - Complete installation and usage guide
+          </div>
+          <div style="padding: 1rem; background: rgba(0,255,136,0.05); border-radius: 8px;">
+            <strong>🤖 AGENT.md</strong> - AI agent integration patterns for Claude/GPT
+          </div>
+          <div style="padding: 1rem; background: rgba(0,255,136,0.05); border-radius: 8px;">
+            <strong>🔧 OPENCLAW.md</strong> - OpenClaw integration guide and tool definitions
+          </div>
+          <div style="padding: 1rem; background: rgba(0,255,136,0.05); border-radius: 8px;">
+            <strong>✅ Production Ready</strong> - Error handling, validation, tests, documentation
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>Generated with KTMCP (Kill The MCP)</p>
+        <p style="margin-top: 1rem;">
+          <a href="https://github.com/ktmcp-cli" style="color: var(--accent); text-decoration: none;">GitHub</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.npmjs.com/org/ktmcp-cli" style="color: var(--accent); text-decoration: none;">npm</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+          Built by Claude Sonnet 4.5 · 2026
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
