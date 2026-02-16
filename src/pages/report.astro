@@ -1,0 +1,225 @@
+---
+const searchParams = Astro.url.searchParams;
+const cli = searchParams.get('cli') || '';
+const command = searchParams.get('cmd') || '';
+const error = searchParams.get('err') || '';
+const version = searchParams.get('v') || '';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Report Issue - Kill The MCP</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Space Mono', 'SF Mono', monospace;
+        background: #000;
+        color: #00ff7f;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
+      }
+
+      h1::before {
+        content: '$ ';
+        opacity: 0.7;
+      }
+
+      .intro {
+        color: #8b9d9f;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: #0a0e0f;
+        border-left: 4px solid #00ff7f;
+      }
+
+      form {
+        background: #0a0e0f;
+        padding: 2rem;
+        border: 2px solid #00ff7f;
+      }
+
+      label {
+        display: block;
+        color: #00ff7f;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      label::before {
+        content: '> ';
+      }
+
+      input, textarea, select {
+        width: 100%;
+        padding: 0.75rem;
+        background: #000;
+        border: 1px solid #22d388;
+        color: #e6edf3;
+        font-family: inherit;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+
+      input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: #00ff7f;
+        box-shadow: 0 0 10px rgba(0, 255, 127, 0.2);
+      }
+
+      textarea {
+        min-height: 120px;
+        font-family: inherit;
+      }
+
+      .readonly {
+        background: #151b1e;
+        color: #8b9d9f;
+        cursor: not-allowed;
+      }
+
+      button {
+        background: #00ff7f;
+        color: #000;
+        border: none;
+        padding: 1rem 2rem;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      button::before {
+        content: '> ';
+      }
+
+      button:hover {
+        box-shadow: 0 0 20px rgba(0, 255, 127, 0.5);
+        transform: translateY(-2px);
+      }
+
+      .note {
+        margin-top: 1rem;
+        color: #8b9d9f;
+        font-size: 0.85rem;
+      }
+
+      .note::before {
+        content: '# ';
+        color: #22d388;
+      }
+
+      a {
+        color: #00ff7f;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Report Issue</h1>
+
+      <div class="intro">
+        <p>Thanks for helping improve KTMCP! This form creates an issue report that we'll review.</p>
+        <p style="margin-top: 0.5rem;">All sensitive data (API keys, tokens, personal info) should already be removed by the CLI.</p>
+      </div>
+
+      <form name="issue-report" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="issue-report" />
+
+        <!-- Honeypot for spam protection -->
+        <p style="display: none;">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
+
+        <label for="cli">CLI Name</label>
+        <input
+          type="text"
+          id="cli"
+          name="cli"
+          value={cli}
+          class="readonly"
+          readonly
+          required
+        />
+
+        <label for="version">Version</label>
+        <input
+          type="text"
+          id="version"
+          name="version"
+          value={version}
+          class="readonly"
+          readonly
+        />
+
+        <label for="command">Command That Failed</label>
+        <input
+          type="text"
+          id="command"
+          name="command"
+          value={command}
+          class="readonly"
+          readonly
+          required
+        />
+
+        <label for="error">Error Message</label>
+        <textarea
+          id="error"
+          name="error"
+          class="readonly"
+          readonly
+          required
+        >{error}</textarea>
+
+        <label for="context">Additional Context (Optional)</label>
+        <textarea
+          id="context"
+          name="context"
+          placeholder="What were you trying to do? Any other details that might help?"
+        ></textarea>
+
+        <label for="email">Email (Optional - for follow-up)</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="your@email.com"
+        />
+
+        <button type="submit">Submit Issue Report</button>
+
+        <p class="note">
+          This will be reviewed manually. No automatic fixes or responses.
+        </p>
+        <p class="note" style="margin-top: 0.5rem;">
+          Want faster help? <a href="https://github.com/ktmcp-cli">Check GitHub issues</a> or <a href="https://www.npmjs.com/org/ktmcp-cli">update to latest version</a>.
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

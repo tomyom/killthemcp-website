@@ -1,0 +1,582 @@
+---
+const clis = [
+  {
+    name: 'Billingo',
+    slug: 'billingo',
+    package: '@ktmcp-cli/billingo',
+    description: 'Hungarian invoicing and billing API',
+    github: 'https://github.com/ktmcp-cli/billingo',
+    category: 'Finance'
+  },
+  {
+    name: 'NOWPayments',
+    slug: 'nowpayments',
+    package: '@ktmcp-cli/nowpayments',
+    description: 'Cryptocurrency payment processing',
+    github: 'https://github.com/ktmcp-cli/nowpayments',
+    category: 'Finance'
+  },
+  {
+    name: 'Nordigen',
+    slug: 'nordigen',
+    package: '@ktmcp-cli/nordigen',
+    description: 'Open banking account information',
+    github: 'https://github.com/ktmcp-cli/nordigen',
+    category: 'Finance'
+  },
+  {
+    name: 'Klarna',
+    slug: 'klarna',
+    package: '@ktmcp-cli/klarna',
+    description: 'Payment processing platform',
+    github: 'https://github.com/ktmcp-cli/klarna',
+    category: 'Finance'
+  },
+  {
+    name: 'Codat',
+    slug: 'codat',
+    package: '@ktmcp-cli/codat',
+    description: 'Unified accounting data from 20+ platforms',
+    github: 'https://github.com/ktmcp-cli/codat',
+    category: 'Finance'
+  }
+];
+
+const stats = {
+  clis: clis.length,
+  apis: clis.length,
+  lines: '~10,000',
+  docs: '133+'
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Kill The MCP - Production CLIs for APIs Without CLIs</title>
+    <meta name="description" content="Automated system generating production-ready command-line tools for APIs. 5 CLIs/day. Real TypeScript. No MCP needed." />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #0a0a0a;
+        --fg: #fafafa;
+        --accent: #00ff88;
+        --accent-dim: #00aa55;
+        --border: #1a1a1a;
+        --card-bg: #0f0f0f;
+        --text-muted: #a0a0a0;
+        --text-dimmed: #666;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      header {
+        text-align: center;
+        padding: 6rem 0 5rem;
+        position: relative;
+      }
+
+      .logo-wrapper {
+        margin-bottom: 2rem;
+      }
+
+      .logo-wrapper img {
+        width: 180px;
+        height: 180px;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0, 255, 136, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .logo-wrapper img:hover {
+        transform: scale(1.05);
+      }
+
+      h1 {
+        font-size: clamp(3rem, 8vw, 5rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, var(--accent) 0%, #00ccff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.03em;
+      }
+
+      .tagline {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        font-weight: 500;
+      }
+
+      .hero-description {
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        font-size: 1.125rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2.5rem;
+        background: var(--accent);
+        color: var(--bg);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 12px;
+        font-size: 1.125rem;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 24px rgba(0, 255, 136, 0.3);
+      }
+
+      .hero-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(0, 255, 136, 0.4);
+        background: #00ffaa;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 5rem 0;
+        padding: 3rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat {
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .stat-value {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .stat-label {
+        color: var(--text-dimmed);
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .section-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        font-size: 1.125rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .clis-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 1.5rem;
+        margin: 4rem 0;
+      }
+
+      .cli-card-link {
+        text-decoration: none;
+        display: block;
+      }
+
+      .cli-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .cli-card-link:hover .cli-card {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
+      }
+
+      .cli-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--fg);
+      }
+
+      .cli-package {
+        font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+        color: var(--text-dimmed);
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+
+      .cli-description {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .cli-links {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .cli-link {
+        display: inline-block;
+        padding: 0.625rem 1rem;
+        background: rgba(0, 255, 136, 0.1);
+        color: var(--accent);
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.2s ease;
+        border: 1px solid rgba(0, 255, 136, 0.2);
+      }
+
+      .cli-card-link:hover .cli-link {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+
+      .why-section {
+        background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 204, 255, 0.05) 100%);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 4rem 3rem;
+        margin: 6rem 0;
+      }
+
+      .why-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        font-size: 1.125rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .why-item {
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .why-item:hover {
+        background: rgba(0, 0, 0, 0.5);
+        border-color: rgba(0, 255, 136, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .why-item h3 {
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .why-item p {
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      .features-section {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 4rem 3rem;
+        margin: 6rem 0;
+      }
+
+      .features-grid {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .feature-item {
+        padding: 1.5rem;
+        background: rgba(0, 255, 136, 0.03);
+        border-radius: 12px;
+        border: 1px solid rgba(0, 255, 136, 0.1);
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .feature-item:hover {
+        background: rgba(0, 255, 136, 0.05);
+        border-color: rgba(0, 255, 136, 0.2);
+      }
+
+      .feature-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .feature-content {
+        flex: 1;
+      }
+
+      .feature-content strong {
+        color: var(--fg);
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+
+      .feature-content span {
+        color: var(--text-muted);
+        margin-left: 0.5rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 4rem 0 2rem;
+        color: var(--text-dimmed);
+        border-top: 1px solid var(--border);
+        margin-top: 6rem;
+      }
+
+      .footer-links {
+        margin-top: 1rem;
+      }
+
+      .footer-links a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer-links a:hover {
+        color: #00ffaa;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.375rem 0.875rem;
+        background: var(--accent);
+        color: var(--bg);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1.5rem;
+        }
+
+        header {
+          padding: 4rem 0 3rem;
+        }
+
+        .why-section,
+        .features-section {
+          padding: 3rem 2rem;
+        }
+
+        .stats {
+          margin: 3rem 0;
+          padding: 2rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo-wrapper">
+          <img src="/logo.png" alt="KTMCP Logo" />
+        </div>
+        <h1>Kill The MCP</h1>
+        <p class="tagline">Production CLIs for APIs Without CLIs</p>
+        <p class="hero-description">
+          We're building a different kind of tooling. Instead of wrapping everything in abstraction layers, we generate real, production-ready command-line tools that talk directly to APIs. No servers, no middlemen, just code that works.
+        </p>
+        <a href="https://github.com/ktmcp-cli" class="hero-cta">
+          Explore on GitHub →
+        </a>
+      </header>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value">{stats.clis}</div>
+          <div class="stat-label">CLIs Published</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{stats.lines}</div>
+          <div class="stat-label">Lines of Code</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{stats.docs}</div>
+          <div class="stat-label">Documentation Files</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">5/day</div>
+          <div class="stat-label">Generation Rate</div>
+        </div>
+      </div>
+
+      <section class="why-section">
+        <h2>Why CLIs over MCP?</h2>
+        <p class="why-intro">
+          Look, we get it. MCP servers are trendy. But sometimes the old ways are better. Here's why we think direct CLI tools beat abstraction layers for most use cases.
+        </p>
+        <div class="why-grid">
+          <div class="why-item">
+            <h3>⚡ Actually Fast</h3>
+            <p>No server roundtrips. No token parsing overhead. Just your code calling the API directly. The difference is noticeable.</p>
+          </div>
+          <div class="why-item">
+            <h3>💰 Costs Nothing</h3>
+            <p>Run it on your machine. No hosting bills, no per-request charges, no surprise costs when you scale. It's just... free.</p>
+          </div>
+          <div class="why-item">
+            <h3>🎯 Dead Simple</h3>
+            <p>You already know how CLIs work. Pipe things together, redirect output, compose commands. No new mental models to learn.</p>
+          </div>
+          <div class="why-item">
+            <h3>🔒 Predictable</h3>
+            <p>Same input gives you the same output, every single time. No AI making creative decisions when you just want your data.</p>
+          </div>
+          <div class="why-item">
+            <h3>🛠️ Easy to Debug</h3>
+            <p>When something breaks, you can see exactly what's happening. No mystery layer between you and the problem.</p>
+          </div>
+          <div class="why-item">
+            <h3>📦 Works Everywhere</h3>
+            <p>Got Node.js? You're good. No Docker containers, no special runtimes, no server infrastructure to manage.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>What We've Built So Far</h2>
+        <p class="section-intro">
+          We're starting with finance APIs because they're useful and well-documented. Each tool is production-ready with proper error handling, auth flows, and comprehensive docs.
+        </p>
+        <div class="clis-grid">
+          {clis.map(cli => (
+            <a href={`/${cli.slug}`} class="cli-card-link">
+              <div class="cli-card">
+                <div class="badge">{cli.category}</div>
+                <div class="cli-name">{cli.name}</div>
+                <div class="cli-package">{cli.package}</div>
+                <div class="cli-description">{cli.description}</div>
+                <div class="cli-links">
+                  <span class="cli-link">View Details →</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="features-section">
+        <h2>What's Included</h2>
+        <p class="section-intro">
+          Every CLI we generate comes with everything you need to actually use it in production. No half-finished experiments here.
+        </p>
+        <div class="features-grid">
+          <div class="feature-item">
+            <span class="feature-icon">📖</span>
+            <div class="feature-content">
+              <strong>README.md</strong>
+              <span>Complete installation guide, auth setup, and usage examples</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🤖</span>
+            <div class="feature-content">
+              <strong>AGENT.md</strong>
+              <span>Integration patterns for Claude and GPT agents</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🔧</span>
+            <div class="feature-content">
+              <strong>OPENCLAW.md</strong>
+              <span>OpenClaw integration guide with tool definitions</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✅</span>
+            <div class="feature-content">
+              <strong>Production Ready</strong>
+              <span>Error handling, input validation, tests, and proper documentation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>Generated with KTMCP (Kill The MCP)</p>
+        <p class="footer-links">
+          <a href="https://github.com/ktmcp-cli">GitHub</a>
+          <span style="color: var(--border); margin: 0 0.5rem;">·</span>
+          <a href="https://www.npmjs.com/org/ktmcp-cli">npm</a>
+        </p>
+        <p style="margin-top: 1.5rem; font-size: 0.875rem;">
+          Built by Claude Sonnet 4.5 · 2026
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

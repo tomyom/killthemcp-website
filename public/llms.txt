@@ -1,0 +1,65 @@
+# Kill The MCP (KTMCP)
+
+> Production-ready command-line interfaces for APIs. We generate CLIs that talk directly to APIs with no servers, no abstraction layers, and no MCP overhead. Currently covering finance APIs with 5 published CLIs.
+
+## Project Overview
+
+Kill The MCP is an open-source project that generates production-ready CLIs for APIs that don't have good command-line tools. We believe CLIs are superior to Model Context Protocol (MCP) servers for AI agents because they're faster, simpler, cheaper, and more deterministic.
+
+Philosophy: Direct API access beats abstraction layers. No servers to maintain, no protocol parsing overhead, just standard Unix tools that work with any AI assistant.
+
+Current focus: Finance and accounting APIs (Billingo, NOWPayments, Nordigen, Klarna, Codat).
+
+## Available CLIs
+
+- [Billingo CLI](https://github.com/ktmcp-cli/billingo): Hungarian invoicing and billing automation API
+- [NOWPayments CLI](https://github.com/ktmcp-cli/nowpayments): Cryptocurrency payment processing with 200+ coins supported
+- [Nordigen CLI](https://github.com/ktmcp-cli/nordigen): Open banking across 2500+ European financial institutions
+- [Klarna CLI](https://github.com/ktmcp-cli/klarna): Buy now, pay later payment integration
+- [Codat CLI](https://github.com/ktmcp-cli/codat): Unified accounting data from 20+ platforms (Xero, QuickBooks, Sage)
+
+## Installation & Usage
+
+- [npm organization](https://www.npmjs.com/org/ktmcp-cli): All CLIs published as @ktmcp-cli/* packages
+- [GitHub organization](https://github.com/ktmcp-cli): Source code for all CLIs
+
+## Documentation
+
+- [Billingo Documentation](https://github.com/ktmcp-cli/billingo#readme): Complete API coverage for invoices, clients, products
+- [NOWPayments Documentation](https://github.com/ktmcp-cli/nowpayments#readme): Payment creation, status tracking, currency management
+- [Nordigen Documentation](https://github.com/ktmcp-cli/nordigen#readme): Account connections, transaction retrieval, balance queries
+- [Klarna Documentation](https://github.com/ktmcp-cli/klarna#readme): Payment sessions, order management, captures and refunds
+- [Codat Documentation](https://github.com/ktmcp-cli/codat#readme): Company connections, financial data access, unified accounting
+
+## AI Agent Integration
+
+Each CLI includes:
+
+- AGENT.md: Universal AI agent integration guide with usage patterns and examples
+- OPENCLAW.md: OpenClaw-specific tool definitions and integration instructions
+- Standard input/output: JSON format for programmatic usage
+- Exit codes: 0 for success, 1 for errors (easily parseable by agents)
+- Environment variable auth: Secure credential management
+
+## Project Resources
+
+- [Main website](https://killthemcp.netlify.app): Landing page with terminal-first design
+- [Individual CLI pages](https://killthemcp.netlify.app/billingo): Dedicated pages for each CLI with examples
+
+## Technical Details
+
+All CLIs built with:
+- Node.js and Commander.js for consistent CLI structure
+- Axios with automatic retry for robust API calls
+- Multiple output formats: JSON, table, YAML
+- Persistent configuration storage
+- Comprehensive error handling with rate limit management
+
+License: MIT
+Author: Tom Granot (with Claude Sonnet 4.5)
+Status: Active development, new CLIs added regularly
+
+## Optional
+
+- [Brand research document](https://github.com/ktmcp-cli): Internal design analysis
+- [21st.dev inspiration](https://github.com/ktmcp-cli): UI/UX reference materials

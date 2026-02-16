@@ -2,58 +2,102 @@
 const clis = [
   {
     name: 'Billingo',
+    slug: 'billingo',
     package: '@ktmcp-cli/billingo',
-    description: 'Hungarian invoicing and billing API',
+    description: 'Hungarian invoicing and billing automation',
     github: 'https://github.com/ktmcp-cli/billingo',
-    category: 'Finance'
+    category: 'Finance',
+    terminalExample: `$ billingo invoices list --limit 5
+
+✓ Found 23 invoices
+┌───────┬──────────────┬────────────┬──────────┐
+│ ID    │ Client       │ Amount     │ Status   │
+├───────┼──────────────┼────────────┼──────────┤
+│ 12345 │ Acme Corp    │ 1,250 EUR  │ paid     │
+│ 12344 │ Tech Ltd     │ 890 EUR    │ pending  │
+└───────┴──────────────┴────────────┴──────────┘`
   },
   {
     name: 'NOWPayments',
+    slug: 'nowpayments',
     package: '@ktmcp-cli/nowpayments',
     description: 'Cryptocurrency payment processing',
     github: 'https://github.com/ktmcp-cli/nowpayments',
-    category: 'Finance'
+    category: 'Finance',
+    terminalExample: `$ nowpayments payment create \\
+  --amount 100 --currency BTC
+
+✓ Payment created successfully
+{
+  "payment_id": "5234523482",
+  "amount": 0.00234 BTC,
+  "address": "bc1q...xyz"
+}`
   },
   {
     name: 'Nordigen',
+    slug: 'nordigen',
     package: '@ktmcp-cli/nordigen',
-    description: 'Open banking account information',
+    description: 'Open banking across 2500+ institutions',
     github: 'https://github.com/ktmcp-cli/nordigen',
-    category: 'Finance'
+    category: 'Finance',
+    terminalExample: `$ nordigen accounts list
+
+✓ Connected accounts (3)
+
+HSBC UK | €12,456.78
+└─ **** **** **** 1234
+
+Revolut | €8,932.45
+└─ **** **** **** 5678`
   },
   {
     name: 'Klarna',
+    slug: 'klarna',
     package: '@ktmcp-cli/klarna',
-    description: 'Payment processing platform',
+    description: 'Buy now, pay later integration',
     github: 'https://github.com/ktmcp-cli/klarna',
-    category: 'Finance'
+    category: 'Finance',
+    terminalExample: `$ klarna order create \\
+  --amount 12999 \\
+  --currency SEK
+
+✓ Order created
+Session ID: a1b2c3d4-e5f6
+Redirect: https://klarna.com/...`
   },
   {
     name: 'Codat',
+    slug: 'codat',
     package: '@ktmcp-cli/codat',
-    description: 'Unified accounting data from 20+ platforms',
+    description: 'Unified accounting from 20+ platforms',
     github: 'https://github.com/ktmcp-cli/codat',
-    category: 'Finance'
+    category: 'Finance',
+    terminalExample: `$ codat companies list --platform xero
+
+✓ Found 12 companies
+
+Acme Corp (UK)
+├─ Platform: Xero
+├─ Status: Linked
+└─ Last sync: 2 hours ago`
   }
 ];
-
-const stats = {
-  clis: clis.length,
-  apis: clis.length,
-  lines: '~10,000',
-  docs: '133+'
-};
 ---
 
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Kill The MCP - Production CLIs for APIs Without CLIs</title>
-    <meta name="description" content="Automated system generating production-ready command-line tools for APIs. 5 CLIs/day. Real TypeScript. No MCP needed." />
+    <title>Kill The MCP - Production CLIs for APIs</title>
+    <meta name="description" content="Production-ready command-line tools for APIs. No servers, no abstraction layers, just code that works." />
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
       * {
         margin: 0;
         padding: 0;
@@ -61,359 +105,710 @@ const stats = {
       }
 
       :root {
-        --bg: #0a0a0a;
-        --fg: #ffffff;
-        --accent: #00ff88;
-        --accent-dim: #00aa55;
-        --border: #222;
-        --card-bg: #111;
+        --terminal-black: #000000;
+        --terminal-green: #00ff7f;
+        --terminal-green-dim: #22d388;
+        --terminal-text: #e6edf3;
+        --terminal-text-dim: #8b9d9f;
+        --terminal-bg: #0a0e0f;
+        --terminal-bg-light: #151b1e;
+        --glow: 0 0 10px rgba(0, 255, 127, 0.3);
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        background: var(--bg);
-        color: var(--fg);
+        font-family: 'Space Mono', 'SF Mono', 'Monaco', monospace;
+        background: var(--terminal-black);
+        color: var(--terminal-green);
         line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* CRT scanline effect */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          transparent 50%,
+          rgba(0, 255, 127, 0.02) 50%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 9999;
+        animation: scan 8s linear infinite;
+      }
+
+      @keyframes scan {
+        0% { background-position: 0 0; }
+        100% { background-position: 0 100%; }
+      }
+
+      /* Terminal glow */
+      .terminal-glow {
+        text-shadow: var(--glow);
       }
 
       .container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 0 2rem;
       }
 
+      /* Header - terminal style */
       header {
-        text-align: center;
-        padding: 4rem 0;
-        border-bottom: 2px solid var(--accent);
-        margin-bottom: 4rem;
+        padding: 1.5rem 0;
+        border-bottom: 2px solid var(--terminal-green);
+        background: var(--terminal-bg);
       }
 
-      h1 {
-        font-size: 4rem;
-        font-weight: 900;
-        margin-bottom: 1rem;
-        background: linear-gradient(135deg, var(--accent), #00ccff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--terminal-green);
+        text-decoration: none;
+        text-shadow: var(--glow);
+      }
+
+      .logo::before {
+        content: '> ';
+        opacity: 0.7;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--terminal-text);
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--terminal-green);
+        text-shadow: var(--glow);
+      }
+
+      .nav-links a::before {
+        content: '$ ';
+        opacity: 0.5;
+      }
+
+      /* Hero - full terminal */
+      .hero {
+        padding: 6rem 0 4rem;
+        text-align: center;
+      }
+
+      .ascii-logo {
+        font-size: clamp(0.5rem, 1.2vw, 0.8rem);
+        line-height: 1;
+        color: var(--terminal-green);
+        text-shadow: var(--glow);
+        margin-bottom: 2rem;
+        white-space: pre;
+        font-weight: 700;
+        letter-spacing: 0.05em;
       }
 
       .tagline {
-        font-size: 1.5rem;
-        color: #888;
-        margin-bottom: 2rem;
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        color: var(--terminal-text);
+        margin-bottom: 1rem;
+        font-weight: 400;
       }
 
-      .hero-cta {
-        display: inline-block;
+      .tagline .highlight {
+        color: var(--terminal-green);
+        text-shadow: var(--glow);
+      }
+
+      .description {
+        font-size: 1rem;
+        color: var(--terminal-text-dim);
+        max-width: 600px;
+        margin: 0 auto 3rem;
+      }
+
+      .description::before {
+        content: '';
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
         padding: 1rem 2rem;
-        background: var(--accent);
-        color: var(--bg);
+        border: 2px solid var(--terminal-green);
+        background: transparent;
+        color: var(--terminal-green);
         text-decoration: none;
-        font-weight: bold;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        transition: transform 0.2s;
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
       }
 
-      .hero-cta:hover {
+      .btn::before {
+        content: '> ';
+      }
+
+      .btn:hover {
+        background: var(--terminal-green);
+        color: var(--terminal-black);
+        box-shadow: var(--glow);
         transform: translateY(-2px);
-        background: #00ffaa;
       }
 
+      .btn-secondary {
+        border-color: var(--terminal-text-dim);
+        color: var(--terminal-text-dim);
+      }
+
+      .btn-secondary:hover {
+        background: var(--terminal-text-dim);
+        color: var(--terminal-black);
+      }
+
+      /* Stats - terminal output style */
       .stats {
+        margin: 6rem 0;
+        padding: 3rem 2rem;
+        background: var(--terminal-bg);
+        border: 2px solid var(--terminal-green);
+        position: relative;
+      }
+
+      .stats::before {
+        content: '$ ktmcp --stats';
+        position: absolute;
+        top: -1.5rem;
+        left: 2rem;
+        background: var(--terminal-black);
+        padding: 0 1rem;
+        color: var(--terminal-green-dim);
+        font-size: 0.875rem;
+      }
+
+      .stats-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin: 4rem 0;
+        gap: 3rem;
       }
 
       .stat {
         text-align: center;
-        padding: 2rem;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 8px;
       }
 
-      .stat-value {
+      .stat-number {
         font-size: 3rem;
-        font-weight: bold;
-        color: var(--accent);
+        font-weight: 700;
+        color: var(--terminal-green);
+        text-shadow: var(--glow);
         margin-bottom: 0.5rem;
       }
 
       .stat-label {
-        color: #888;
+        color: var(--terminal-text-dim);
+        font-size: 0.75rem;
         text-transform: uppercase;
+        letter-spacing: 0.2em;
+      }
+
+      /* CLI Grid */
+      section {
+        margin: 6rem 0;
+      }
+
+      .section-header {
+        margin-bottom: 3rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: var(--terminal-green);
+        text-shadow: var(--glow);
+        margin-bottom: 1rem;
+      }
+
+      .section-title::before {
+        content: '';
+      }
+
+      .section-description {
+        color: var(--terminal-text-dim);
         font-size: 0.9rem;
-        letter-spacing: 1px;
       }
 
-      h2 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        text-align: center;
+      .section-description::before {
+        content: '';
       }
 
-      .clis-grid {
+      .cli-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         gap: 2rem;
-        margin: 4rem 0;
       }
 
       .cli-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 2rem;
-        transition: border-color 0.3s, transform 0.3s;
+        background: var(--terminal-bg);
+        border: 2px solid var(--terminal-green-dim);
+        padding: 0;
+        text-decoration: none;
+        display: block;
+        transition: all 0.3s;
+        position: relative;
       }
 
       .cli-card:hover {
-        border-color: var(--accent);
+        border-color: var(--terminal-green);
+        box-shadow: var(--glow);
         transform: translateY(-4px);
       }
 
-      .cli-name {
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        color: var(--accent);
+      .cli-card::before {
+        content: attr(data-package);
+        position: absolute;
+        top: -1rem;
+        left: 1rem;
+        background: var(--terminal-black);
+        padding: 0 0.5rem;
+        color: var(--terminal-green-dim);
+        font-size: 0.75rem;
       }
 
-      .cli-package {
-        font-family: 'Courier New', monospace;
-        color: #666;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
+      .terminal-window {
+        padding: 1.5rem;
+        background: var(--terminal-black);
+        border-bottom: 1px solid var(--terminal-green-dim);
+        min-height: 240px;
+      }
+
+      .terminal-output {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        color: var(--terminal-text);
+        white-space: pre;
+        overflow-x: auto;
+      }
+
+      .cli-info {
+        padding: 1.5rem;
+      }
+
+      .cli-name {
+        font-size: 1.25rem;
+        color: var(--terminal-green);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
       }
 
       .cli-description {
-        color: #ccc;
-        margin-bottom: 1.5rem;
+        color: var(--terminal-text-dim);
+        font-size: 0.85rem;
       }
 
-      .cli-links {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .cli-link {
-        padding: 0.5rem 1rem;
-        background: var(--border);
-        color: var(--fg);
-        text-decoration: none;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        transition: background 0.2s;
-      }
-
-      .cli-link:hover {
-        background: var(--accent-dim);
-        color: var(--bg);
-      }
-
-      .why-section {
-        background: var(--card-bg);
-        border: 2px solid var(--accent);
-        border-radius: 12px;
-        padding: 3rem;
-        margin: 4rem 0;
-      }
-
+      /* Why section */
       .why-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
-        margin-top: 2rem;
       }
 
       .why-item {
-        padding: 1.5rem;
-        background: rgba(0, 255, 136, 0.05);
-        border-radius: 8px;
+        padding: 2rem;
+        background: var(--terminal-bg);
+        border-left: 4px solid var(--terminal-green);
+        transition: all 0.3s;
+      }
+
+      .why-item:hover {
+        border-color: var(--terminal-green);
+        box-shadow: var(--glow);
       }
 
       .why-item h3 {
-        color: var(--accent);
-        margin-bottom: 0.5rem;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        color: var(--terminal-green);
+        margin-bottom: 0.75rem;
+      }
+
+      .why-item h3::before {
+        content: '> ';
       }
 
       .why-item p {
-        color: #aaa;
+        color: var(--terminal-text-dim);
+        font-size: 0.85rem;
       }
 
-      code {
-        background: var(--border);
-        padding: 0.2rem 0.5rem;
-        border-radius: 4px;
-        font-family: 'Courier New', monospace;
-        font-size: 0.9em;
-      }
-
-      pre {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1.5rem;
-        overflow-x: auto;
-        margin: 2rem 0;
-      }
-
-      pre code {
-        background: none;
-        padding: 0;
-      }
-
+      /* Footer */
       footer {
-        text-align: center;
-        padding: 4rem 0 2rem;
-        color: #666;
-        border-top: 1px solid var(--border);
-        margin-top: 4rem;
+        margin-top: 8rem;
+        padding: 3rem 0 2rem;
+        border-top: 2px solid var(--terminal-green);
+        background: var(--terminal-bg);
       }
 
-      .badge {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        background: var(--accent-dim);
-        color: var(--bg);
-        border-radius: 12px;
-        font-size: 0.8rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
+      .footer-content {
+        text-align: center;
+        color: var(--terminal-text-dim);
+        font-size: 0.85rem;
+      }
+
+      .footer-content::before {
+        content: '# ';
+        color: var(--terminal-green-dim);
+      }
+
+      .footer-links {
+        margin-top: 1rem;
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: var(--terminal-text-dim);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: var(--terminal-green);
+      }
+
+      .footer-links a::before {
+        content: '$ ';
+        opacity: 0.5;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        /* Hide ASCII art on mobile, replace with simple text */
+        .ascii-logo {
+          display: none;
+        }
+
+        .hero::before {
+          content: 'KTMCP';
+          display: block;
+          font-size: 3rem;
+          font-weight: 900;
+          color: var(--terminal-green);
+          text-shadow: var(--glow);
+          margin-bottom: 1rem;
+        }
+
+        .hero {
+          padding: 3rem 0 2rem;
+        }
+
+        .tagline {
+          font-size: 1.5rem;
+        }
+
+        .description {
+          font-size: 0.9rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+          text-align: center;
+        }
+
+        /* Stats on mobile */
+        .stats {
+          margin: 3rem 0 4rem;
+          padding: 2rem 1rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        }
+
+        .stat-label {
+          font-size: 0.65rem;
+        }
+
+        /* Section spacing */
+        section {
+          margin: 4rem 0;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .section-description {
+          font-size: 0.85rem;
+        }
+
+        /* CLI cards on mobile */
+        .cli-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .cli-card {
+          font-size: 0.9rem;
+        }
+
+        .cli-card::before {
+          font-size: 0.7rem;
+        }
+
+        .terminal-window {
+          padding: 1rem;
+          min-height: 180px;
+        }
+
+        .terminal-output {
+          font-size: 0.7rem;
+        }
+
+        .cli-name {
+          font-size: 1.1rem;
+        }
+
+        /* Why grid on mobile */
+        .why-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .why-item {
+          padding: 1.5rem;
+        }
+
+        .why-item h3 {
+          font-size: 1rem;
+        }
+
+        .why-item p {
+          font-size: 0.8rem;
+        }
+
+        /* Navigation on mobile */
+        nav {
+          font-size: 0.85rem;
+        }
+
+        .logo {
+          font-size: 1.25rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .nav-links a {
+          font-size: 0.8rem;
+        }
+
+        /* Footer on mobile */
+        footer {
+          margin-top: 4rem;
+          padding: 2rem 0 1.5rem;
+        }
+
+        .footer-content {
+          font-size: 0.75rem;
+        }
+
+        .footer-links {
+          font-size: 0.8rem;
+          gap: 1.5rem;
+        }
+      }
+
+      /* Tablet breakpoint */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .ascii-logo {
+          font-size: 0.6rem;
+        }
+
+        .cli-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .why-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <img src="/logo.png" alt="KTMCP Logo" style="width: 200px; height: 200px; margin: 0 auto 2rem; display: block; border-radius: 20px;" />
-        <h1>Kill The MCP</h1>
-        <p class="tagline">Production CLIs for APIs Without CLIs</p>
-        <p style="color: #666; margin-bottom: 2rem;">
-          Automated system generating 5 production-ready command-line tools daily.<br />
-          Real TypeScript. Real code. No MCP abstraction needed.
-        </p>
-        <a href="https://github.com/ktmcp-cli" class="hero-cta">View on GitHub →</a>
-      </header>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="/" class="logo">KTMCP</a>
+          <div class="nav-links">
+            <a href="#clis">clis</a>
+            <a href="https://github.com/ktmcp-cli">github</a>
+            <a href="https://www.npmjs.com/org/ktmcp-cli">npm</a>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-value">{stats.clis}</div>
-          <div class="stat-label">CLIs Published</div>
+    <main>
+      <div class="container">
+        <section class="hero">
+          <pre class="ascii-logo">
+██╗  ██╗████████╗███╗   ███╗ ██████╗██████╗
+██║ ██╔╝╚══██╔══╝████╗ ████║██╔════╝██╔══██╗
+█████╔╝    ██║   ██╔████╔██║██║     ██████╔╝
+██╔═██╗    ██║   ██║╚██╔╝██║██║     ██╔═══╝
+██║  ██╗   ██║   ██║ ╚═╝ ██║╚██████╗██║
+╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝ ╚═════╝╚═╝
+          </pre>
+
+          <h1 class="tagline">
+            <span class="highlight">Kill The MCP.</span> Use CLIs.
+          </h1>
+
+          <p class="description">
+            MCPs should've just been CLIs with good docs so your AI could easily connect to any 3rd party API. We're fixing that.
+          </p>
+
+          <div class="cta-buttons">
+            <a href="https://www.npmjs.com/org/ktmcp-cli" class="btn">Browse CLIs</a>
+            <a href="https://github.com/ktmcp-cli" class="btn btn-secondary">GitHub</a>
+          </div>
+        </section>
+
+        <div class="stats">
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-number">5</div>
+              <div class="stat-label">CLIs</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">~10K</div>
+              <div class="stat-label">LOC</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">133+</div>
+              <div class="stat-label">Docs</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">MIT</div>
+              <div class="stat-label">License</div>
+            </div>
+          </div>
         </div>
-        <div class="stat">
-          <div class="stat-value">{stats.lines}</div>
-          <div class="stat-label">Lines of Code</div>
+
+        <section id="clis">
+          <div class="section-header">
+            <h2 class="section-title">Available CLIs</h2>
+            <p class="section-description">
+              Starting with finance APIs. More coming soon - Stripe, Shopify, and others.
+            </p>
+          </div>
+
+          <div class="cli-grid">
+            {clis.map(cli => (
+              <a
+                href={`/${cli.slug}`}
+                class="cli-card"
+                data-package={cli.package}
+              >
+                <div class="terminal-window">
+                  <pre class="terminal-output">{cli.terminalExample}</pre>
+                </div>
+                <div class="cli-info">
+                  <div class="cli-name">{cli.name}</div>
+                  <div class="cli-description">{cli.description}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <div class="section-header">
+            <h2 class="section-title">Why CLI over MCP?</h2>
+            <p class="section-description">
+              Direct API access beats abstraction layers.
+            </p>
+          </div>
+
+          <div class="why-grid">
+            <div class="why-item">
+              <h3>Faster</h3>
+              <p>Direct API calls. No server overhead. No protocol parsing.</p>
+            </div>
+            <div class="why-item">
+              <h3>Cheaper</h3>
+              <p>Zero hosting. Zero per-request fees. Just your API bill.</p>
+            </div>
+            <div class="why-item">
+              <h3>Simpler</h3>
+              <p>Standard Unix. Pipe, redirect, compose. You know this.</p>
+            </div>
+            <div class="why-item">
+              <h3>Deterministic</h3>
+              <p>Same input, same output. Every time. No surprises.</p>
+            </div>
+            <div class="why-item">
+              <h3>Debuggable</h3>
+              <p>See what's happening. Read the code. No black boxes.</p>
+            </div>
+            <div class="why-item">
+              <h3>Portable</h3>
+              <p>Got Node.js? You're done. No containers. No setup.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          Built by Tom Granot with Claude Sonnet 4.5 • MIT License • 2026
         </div>
-        <div class="stat">
-          <div class="stat-value">{stats.docs}</div>
-          <div class="stat-label">Documentation Files</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">5/day</div>
-          <div class="stat-label">Generation Rate</div>
+        <div class="footer-links">
+          <a href="https://github.com/ktmcp-cli">github</a>
+          <a href="https://www.npmjs.com/org/ktmcp-cli">npm</a>
+          <a href="https://github.com/ktmcp-cli/billingo">docs</a>
         </div>
       </div>
-
-      <section class="why-section">
-        <h2>Why CLI > MCP?</h2>
-        <div class="why-grid">
-          <div class="why-item">
-            <h3>⚡ Faster</h3>
-            <p>Direct API calls. No server overhead. No abstraction layers. Just raw performance.</p>
-          </div>
-          <div class="why-item">
-            <h3>💰 Cheaper</h3>
-            <p>No server costs. No token usage for every operation. Run locally, pay nothing.</p>
-          </div>
-          <div class="why-item">
-            <h3>🎯 Simpler</h3>
-            <p>Standard Unix philosophy. Pipe, redirect, compose. No new abstractions to learn.</p>
-          </div>
-          <div class="why-item">
-            <h3>🔒 Deterministic</h3>
-            <p>Same input, same output. Every time. No AI unpredictability in your workflows.</p>
-          </div>
-          <div class="why-item">
-            <h3>🛠️ Debuggable</h3>
-            <p>See exactly what's happening. Full control. No black box between you and the API.</p>
-          </div>
-          <div class="why-item">
-            <h3>📦 Portable</h3>
-            <p>Works anywhere Node.js runs. No special runtime. No server dependencies.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Available CLIs</h2>
-        <div class="clis-grid">
-          {clis.map(cli => (
-            <div class="cli-card">
-              <div class="badge">{cli.category}</div>
-              <div class="cli-name">{cli.name}</div>
-              <div class="cli-package">{cli.package}</div>
-              <div class="cli-description">{cli.description}</div>
-              <div class="cli-links">
-                <a href={cli.github} class="cli-link">GitHub</a>
-                <a href={`https://www.npmjs.com/package/${cli.package}`} class="cli-link">npm</a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style="margin: 4rem 0;">
-        <h2>Quick Start</h2>
-        <pre><code># Install any CLI
-npm install -g @ktmcp-cli/nordigen
-
-# Authenticate
-nordigen auth login --secret-id YOUR_ID --secret-key YOUR_KEY
-
-# Use it
-nordigen institutions list --country GB
-nordigen accounts list COMPANY_ID --format json
-
-# Pipe and compose
-nordigen accounts transactions ACCOUNT_ID | jq '.transactions[] | select(.amount > 1000)'</code></pre>
-      </section>
-
-      <section class="why-section">
-        <h2>Every CLI Includes</h2>
-        <div style="display: grid; gap: 1rem; margin-top: 2rem;">
-          <div style="padding: 1rem; background: rgba(0,255,136,0.05); border-radius: 8px;">
-            <strong>📖 README.md</strong> - Complete installation and usage guide
-          </div>
-          <div style="padding: 1rem; background: rgba(0,255,136,0.05); border-radius: 8px;">
-            <strong>🤖 AGENT.md</strong> - AI agent integration patterns for Claude/GPT
-          </div>
-          <div style="padding: 1rem; background: rgba(0,255,136,0.05); border-radius: 8px;">
-            <strong>🔧 OPENCLAW.md</strong> - OpenClaw integration guide and tool definitions
-          </div>
-          <div style="padding: 1rem; background: rgba(0,255,136,0.05); border-radius: 8px;">
-            <strong>✅ Production Ready</strong> - Error handling, validation, tests, documentation
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <p>Generated with KTMCP (Kill The MCP)</p>
-        <p style="margin-top: 1rem;">
-          <a href="https://github.com/ktmcp-cli" style="color: var(--accent); text-decoration: none;">GitHub</a>
-          &nbsp;·&nbsp;
-          <a href="https://www.npmjs.com/org/ktmcp-cli" style="color: var(--accent); text-decoration: none;">npm</a>
-        </p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">
-          Built by Claude Sonnet 4.5 · 2026
-        </p>
-      </footer>
-    </div>
+    </footer>
   </body>
 </html>
+<!-- Auto-deploy test -->

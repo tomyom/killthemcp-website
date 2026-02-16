@@ -1,0 +1,588 @@
+---
+export async function getStaticPaths() {
+  const clis = [
+    {
+      name: 'Billingo',
+      slug: 'billingo',
+      package: '@ktmcp-cli/billingo',
+      description: 'Hungarian invoicing and billing API',
+      longDescription: 'Billingo is a comprehensive invoicing and billing solution popular in Hungary. This CLI provides full access to the Billingo API, allowing you to manage invoices, clients, products, and more directly from your terminal.',
+      github: 'https://github.com/ktmcp-cli/billingo',
+      category: 'Finance',
+      features: [
+        'Create and manage invoices',
+        'Handle client information',
+        'Product catalog management',
+        'Payment tracking',
+        'Document generation',
+        'Tax calculations'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up your API credentials
+billingo auth login --api-key YOUR_API_KEY
+
+# Verify authentication
+billingo auth status`
+        },
+        {
+          title: 'List invoices',
+          code: `# Get all invoices
+billingo invoices list
+
+# Filter by date range
+billingo invoices list --start-date 2026-01-01 --end-date 2026-01-31
+
+# Export as JSON
+billingo invoices list --format json`
+        },
+        {
+          title: 'Create an invoice',
+          code: `# Create a new invoice
+billingo invoices create \\
+  --client-id 12345 \\
+  --items '[{"name":"Service","quantity":1,"unit_price":100}]' \\
+  --due-date 2026-02-28`
+        }
+      ]
+    },
+    {
+      name: 'NOWPayments',
+      slug: 'nowpayments',
+      package: '@ktmcp-cli/nowpayments',
+      description: 'Cryptocurrency payment processing',
+      longDescription: 'NOWPayments is a non-custodial cryptocurrency payment gateway that allows you to accept crypto payments. This CLI provides access to payment creation, status checking, and transaction management.',
+      github: 'https://github.com/ktmcp-cli/nowpayments',
+      category: 'Finance',
+      features: [
+        'Accept cryptocurrency payments',
+        'Support for 200+ cryptocurrencies',
+        'Payment status tracking',
+        'Instant payment notifications',
+        'Automated currency conversion',
+        'Refund management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Configure API credentials
+nowpayments auth login --api-key YOUR_API_KEY
+
+# Test connection
+nowpayments auth status`
+        },
+        {
+          title: 'Create a payment',
+          code: `# Create a new payment
+nowpayments payments create \\
+  --price-amount 100 \\
+  --price-currency USD \\
+  --pay-currency BTC \\
+  --order-id ORDER123
+
+# Get payment status
+nowpayments payments status PAYMENT_ID`
+        },
+        {
+          title: 'List available currencies',
+          code: `# Get all supported currencies
+nowpayments currencies list
+
+# Get specific currency info
+nowpayments currencies get BTC`
+        }
+      ]
+    },
+    {
+      name: 'Nordigen',
+      slug: 'nordigen',
+      package: '@ktmcp-cli/nordigen',
+      description: 'Open banking account information',
+      longDescription: 'Nordigen (now GoCardless) provides free access to bank account data across Europe through PSD2 open banking APIs. Connect to 2000+ banks to retrieve account information, transactions, and balances.',
+      github: 'https://github.com/ktmcp-cli/nordigen',
+      category: 'Finance',
+      features: [
+        'Connect to 2000+ European banks',
+        'Retrieve account balances',
+        'Access transaction history',
+        'Account holder information',
+        'Multi-account support',
+        'Real-time data synchronization'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+nordigen auth login \\
+  --secret-id YOUR_SECRET_ID \\
+  --secret-key YOUR_SECRET_KEY
+
+# Generate access token
+nordigen auth token`
+        },
+        {
+          title: 'List banks',
+          code: `# Get available institutions by country
+nordigen institutions list --country GB
+
+# Search for a specific bank
+nordigen institutions search "Revolut"`
+        },
+        {
+          title: 'Access account data',
+          code: `# List connected accounts
+nordigen accounts list
+
+# Get account transactions
+nordigen accounts transactions ACCOUNT_ID \\
+  --start-date 2026-01-01 \\
+  --end-date 2026-01-31 \\
+  --format json`
+        }
+      ]
+    },
+    {
+      name: 'Klarna',
+      slug: 'klarna',
+      package: '@ktmcp-cli/klarna',
+      description: 'Payment processing platform',
+      longDescription: 'Klarna is a leading buy now, pay later service. This CLI provides access to the Klarna Payments API for creating payment sessions, managing orders, and handling customer transactions.',
+      github: 'https://github.com/ktmcp-cli/klarna',
+      category: 'Finance',
+      features: [
+        'Create payment sessions',
+        'Manage customer orders',
+        'Handle refunds and captures',
+        'Payment method configuration',
+        'Customer credit checks',
+        'Order management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Configure API credentials
+klarna auth login \\
+  --username YOUR_USERNAME \\
+  --password YOUR_PASSWORD \\
+  --region EU
+
+# Test connection
+klarna auth status`
+        },
+        {
+          title: 'Create a payment session',
+          code: `# Create new payment session
+klarna sessions create \\
+  --amount 10000 \\
+  --currency EUR \\
+  --purchase-country SE \\
+  --order-lines '[{"name":"Product","quantity":1,"unit_price":10000}]'`
+        },
+        {
+          title: 'Manage orders',
+          code: `# Get order details
+klarna orders get ORDER_ID
+
+# Capture an order
+klarna orders capture ORDER_ID --amount 10000`
+        }
+      ]
+    },
+    {
+      name: 'Codat',
+      slug: 'codat',
+      package: '@ktmcp-cli/codat',
+      description: 'Unified accounting data from 20+ platforms',
+      longDescription: 'Codat provides a unified API to access accounting, banking, and commerce data from over 20 platforms including Xero, QuickBooks, Sage, and more. Build powerful financial applications with normalized data.',
+      github: 'https://github.com/ktmcp-cli/codat',
+      category: 'Finance',
+      features: [
+        'Connect to 20+ accounting platforms',
+        'Normalized data across platforms',
+        'Real-time data synchronization',
+        'Invoice and bill management',
+        'Financial reporting',
+        'Bank account integration'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+codat auth login --api-key YOUR_API_KEY
+
+# Verify credentials
+codat auth status`
+        },
+        {
+          title: 'Manage companies',
+          code: `# List all companies
+codat companies list
+
+# Get company details
+codat companies get COMPANY_ID
+
+# Create a new company
+codat companies create --name "My Company"`
+        },
+        {
+          title: 'Access financial data',
+          code: `# Get company invoices
+codat invoices list COMPANY_ID
+
+# Get balance sheet
+codat reports balance-sheet COMPANY_ID \\
+  --period-start 2026-01-01 \\
+  --period-end 2026-12-31
+
+# Export to JSON
+codat reports profit-loss COMPANY_ID --format json`
+        }
+      ]
+    }
+  ];
+
+  return clis.map(cli => ({
+    params: { cli: cli.slug },
+    props: { cli }
+  }));
+}
+
+const { cli } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{cli.name} CLI - Kill The MCP</title>
+    <meta name="description" content={`${cli.name}: ${cli.description}. Production-ready CLI for ${cli.name} API.`} />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #0a0a0a;
+        --fg: #fafafa;
+        --accent: #00ff88;
+        --accent-dim: #00aa55;
+        --border: #1a1a1a;
+        --card-bg: #0f0f0f;
+        --text-muted: #a0a0a0;
+        --text-dimmed: #666;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      nav {
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 3rem;
+      }
+
+      .nav-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+        font-size: 0.9rem;
+      }
+
+      .nav-link:hover {
+        color: var(--accent);
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-dimmed);
+      }
+
+      .breadcrumb a {
+        color: var(--text-muted);
+        text-decoration: none;
+      }
+
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+
+      header {
+        margin-bottom: 4rem;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.375rem 0.875rem;
+        background: var(--accent);
+        color: var(--bg);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        letter-spacing: -0.03em;
+      }
+
+      .package-name {
+        font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+        color: var(--text-dimmed);
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .description {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.75rem;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        border: 2px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg);
+        box-shadow: 0 4px 24px rgba(0, 255, 136, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(0, 255, 136, 0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--fg);
+        border-color: var(--border);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--accent);
+        background: rgba(0, 255, 136, 0.05);
+      }
+
+      section {
+        margin: 4rem 0;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        border-color: rgba(0, 255, 136, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .feature-card::before {
+        content: '✓';
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: var(--accent);
+        color: var(--bg);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        font-weight: bold;
+        margin-right: 0.75rem;
+        font-size: 0.875rem;
+      }
+
+      .example {
+        margin-bottom: 3rem;
+      }
+
+      .example h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      pre {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        overflow-x: auto;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      pre code {
+        font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+        color: var(--fg);
+      }
+
+      .install-section {
+        background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 204, 255, 0.05) 100%);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+      }
+
+      .install-section h2 {
+        margin-bottom: 1rem;
+      }
+
+      .install-section p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 4rem 0 2rem;
+        color: var(--text-dimmed);
+        border-top: 1px solid var(--border);
+        margin-top: 6rem;
+      }
+
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: #00ffaa;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1.5rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="breadcrumb">
+          <a href="/">← Back to home</a>
+        </div>
+      </nav>
+
+      <header>
+        <div class="badge">{cli.category}</div>
+        <h1>{cli.name}</h1>
+        <div class="package-name">{cli.package}</div>
+        <p class="description">{cli.longDescription}</p>
+        <div class="cta-buttons">
+          <a href={cli.github} class="btn btn-primary">View on GitHub →</a>
+          <a href={`https://www.npmjs.com/package/${cli.package}`} class="btn btn-secondary">npm Package</a>
+        </div>
+      </header>
+
+      <section class="install-section">
+        <h2>Quick Start</h2>
+        <p>Install the CLI globally using npm:</p>
+        <pre><code>npm install -g {cli.package}</code></pre>
+      </section>
+
+      <section>
+        <h2>Features</h2>
+        <div class="features-grid">
+          {cli.features.map(feature => (
+            <div class="feature-card">{feature}</div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2>Usage Examples</h2>
+        {cli.examples.map(example => (
+          <div class="example">
+            <h3>{example.title}</h3>
+            <pre><code>{example.code}</code></pre>
+          </div>
+        ))}
+      </section>
+
+      <section>
+        <h2>Documentation</h2>
+        <p style="color: var(--text-muted); line-height: 1.8;">
+          For complete documentation, API reference, and advanced usage examples, visit the <a href={cli.github} style="color: var(--accent); text-decoration: none;">GitHub repository</a>.
+          Each CLI includes comprehensive README.md, AGENT.md for AI integration, and OPENCLAW.md for tool definitions.
+        </p>
+      </section>
+
+      <footer>
+        <p>Part of the <a href="/">Kill The MCP</a> project</p>
+        <p style="margin-top: 1rem;">
+          <a href="https://github.com/ktmcp-cli">GitHub</a>
+          <span style="color: var(--border); margin: 0 0.5rem;">·</span>
+          <a href="https://www.npmjs.com/org/ktmcp-cli">npm</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
