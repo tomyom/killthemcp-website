@@ -3,7 +3,7 @@ export async function getStaticPaths() {
   const clis = [
     {
       name: 'Billingo',
-      slug: 'billingo',
+      slug: 'billingo-cli',
       package: '@ktmcp-cli/billingo',
       description: 'Hungarian invoicing and billing API',
       longDescription: 'Billingo is a comprehensive invoicing and billing solution popular in Hungary. This CLI provides full access to the Billingo API, allowing you to manage invoices, clients, products, and more directly from your terminal.',
@@ -49,7 +49,7 @@ billingo invoices create \\
     },
     {
       name: 'NOWPayments',
-      slug: 'nowpayments',
+      slug: 'nowpayments-cli',
       package: '@ktmcp-cli/nowpayments',
       description: 'Cryptocurrency payment processing',
       longDescription: 'NOWPayments is a non-custodial cryptocurrency payment gateway that allows you to accept crypto payments. This CLI provides access to payment creation, status checking, and transaction management.',
@@ -96,7 +96,7 @@ nowpayments currencies get BTC`
     },
     {
       name: 'Nordigen',
-      slug: 'nordigen',
+      slug: 'nordigen-cli',
       package: '@ktmcp-cli/nordigen',
       description: 'Open banking account information',
       longDescription: 'Nordigen (now GoCardless) provides free access to bank account data across Europe through PSD2 open banking APIs. Connect to 2000+ banks to retrieve account information, transactions, and balances.',
@@ -144,7 +144,7 @@ nordigen accounts transactions ACCOUNT_ID \\
     },
     {
       name: 'Klarna',
-      slug: 'klarna',
+      slug: 'klarna-cli',
       package: '@ktmcp-cli/klarna',
       description: 'Payment processing platform',
       longDescription: 'Klarna is a leading buy now, pay later service. This CLI provides access to the Klarna Payments API for creating payment sessions, managing orders, and handling customer transactions.',
@@ -191,7 +191,7 @@ klarna orders capture ORDER_ID --amount 10000`
     },
     {
       name: 'Codat',
-      slug: 'codat',
+      slug: 'codat-cli',
       package: '@ktmcp-cli/codat',
       description: 'Unified accounting data from 20+ platforms',
       longDescription: 'Codat provides a unified API to access accounting, banking, and commerce data from over 20 platforms including Xero, QuickBooks, Sage, and more. Build powerful financial applications with normalized data.',
