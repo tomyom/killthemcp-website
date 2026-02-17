@@ -1,6 +1,92 @@
 ---
 const clis = [
   {
+    name: 'Xero',
+    slug: 'xero',
+    package: '@ktmcp-cli/xero',
+    description: 'Accounting and bookkeeping automation',
+    github: 'https://github.com/ktmcp-cli/xero',
+    category: 'Finance',
+    terminalExample: `$ xero invoices list --status AUTHORISED
+
+✓ Found 18 invoices
+┌──────────┬──────────────┬────────────┬────────────┐
+│ InvNum   │ Contact      │ AmtDue     │ DueDate    │
+├──────────┼──────────────┼────────────┼────────────┤
+│ INV-0042 │ Acme Corp    │ 2,150.00   │ 2026-03-01 │
+│ INV-0041 │ Tech Ltd     │ 890.00     │ 2026-02-28 │
+└──────────┴──────────────┴────────────┴────────────┘`
+  },
+  {
+    name: 'TaxJar',
+    slug: 'taxjar',
+    package: '@ktmcp-cli/taxjar',
+    description: 'Sales tax calculation and compliance',
+    github: 'https://github.com/ktmcp-cli/taxjar',
+    category: 'Finance',
+    terminalExample: `$ taxjar rates get --zip 90210 --state CA
+
+✓ Tax rates for 90210
+{
+  "combined_rate": 0.1025,
+  "state_rate": 0.0725,
+  "county_rate": 0.01,
+  "city_rate": 0.02
+}`
+  },
+  {
+    name: 'Bunq',
+    slug: 'bunq',
+    package: '@ktmcp-cli/bunq',
+    description: 'Modern European banking API',
+    github: 'https://github.com/ktmcp-cli/bunq',
+    category: 'Finance',
+    terminalExample: `$ bunq accounts list
+
+✓ Your bunq accounts (2)
+
+Personal (EUR)
+└─ Balance: €4,231.50
+
+Savings Goal: Vacation
+└─ Balance: €1,750.00 / €3,000.00`
+  },
+  {
+    name: 'Stripe',
+    slug: 'stripe',
+    package: '@ktmcp-cli/stripe',
+    description: 'Payment infrastructure at scale',
+    github: 'https://github.com/ktmcp-cli/stripe',
+    category: 'Finance',
+    terminalExample: `$ stripe payments list --limit 5
+
+✓ Recent payments
+┌──────────────┬──────────┬──────────┬───────────┐
+│ ID           │ Amount   │ Currency │ Status    │
+├──────────────┼──────────┼──────────┼───────────┤
+│ pi_3Ox...abc │ 4,999    │ usd      │ succeeded │
+│ pi_3Ox...def │ 1,200    │ eur      │ succeeded │
+└──────────────┴──────────┴──────────┴───────────┘`
+  },
+  {
+    name: 'QuickBooks',
+    slug: 'quickbooks',
+    package: '@ktmcp-cli/quickbooks',
+    description: 'Small business accounting and invoicing',
+    github: 'https://github.com/ktmcp-cli/quickbooks',
+    category: 'Finance',
+    terminalExample: `$ quickbooks invoices create \\
+  --customer-id 1 --amount 1500
+
+✓ Invoice created
+{
+  "Id": "103",
+  "DocNumber": "INV-1003",
+  "TotalAmt": 1500.00,
+  "Balance": 1500.00
+}`
+  },
+  {
     name: 'Billingo',
     slug: 'billingo',
     package: '@ktmcp-cli/billingo',
@@ -460,6 +546,102 @@ Acme Corp (UK)
         font-size: 0.85rem;
       }
 
+      /* Peter Steinberger quote section */
+      .quote-section {
+        margin: 6rem 0;
+        padding: 3rem;
+        background: var(--terminal-bg);
+        border: 2px solid var(--terminal-green-dim);
+        position: relative;
+      }
+
+      .quote-section::before {
+        content: '$ echo "the origin story"';
+        position: absolute;
+        top: -1.5rem;
+        left: 2rem;
+        background: var(--terminal-black);
+        padding: 0 1rem;
+        color: var(--terminal-green-dim);
+        font-size: 0.875rem;
+      }
+
+      .quote-inner {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .quote-avatar {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .quote-avatar img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid var(--terminal-green);
+        object-fit: cover;
+        filter: grayscale(20%);
+      }
+
+      .openclaw-icon {
+        font-size: 2.5rem;
+        line-height: 1;
+      }
+
+      .quote-content {
+        flex: 1;
+      }
+
+      .quote-text {
+        font-size: 1.1rem;
+        color: var(--terminal-text);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+      }
+
+      .quote-text::before {
+        content: '"';
+        color: var(--terminal-green);
+        font-size: 2rem;
+        line-height: 0;
+        vertical-align: -0.5rem;
+        margin-right: 0.25rem;
+      }
+
+      .quote-text::after {
+        content: '"';
+        color: var(--terminal-green);
+        font-size: 2rem;
+        line-height: 0;
+        vertical-align: -0.5rem;
+        margin-left: 0.25rem;
+      }
+
+      .quote-attribution {
+        color: var(--terminal-green-dim);
+        font-size: 0.85rem;
+      }
+
+      .quote-attribution strong {
+        color: var(--terminal-green);
+      }
+
+      .quote-attribution a {
+        color: var(--terminal-green-dim);
+        text-decoration: none;
+      }
+
+      .quote-attribution a:hover {
+        color: var(--terminal-green);
+      }
+
       /* Footer */
       footer {
         margin-top: 8rem;
@@ -622,6 +804,22 @@ Acme Corp (UK)
           font-size: 0.8rem;
         }
 
+        /* Quote section on mobile */
+        .quote-section {
+          padding: 2rem 1.5rem;
+          margin: 4rem 0;
+        }
+
+        .quote-inner {
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: center;
+        }
+
+        .quote-text {
+          font-size: 0.95rem;
+        }
+
         /* Navigation on mobile */
         nav {
           font-size: 0.85rem;
@@ -711,14 +909,37 @@ Acme Corp (UK)
           </div>
         </section>
 
+        <div class="quote-section">
+          <div class="quote-inner">
+            <div class="quote-avatar">
+              <img
+                src="https://pbs.twimg.com/profile_images/1593545438/steipete_400x400.jpg"
+                alt="Peter Steinberger"
+                onerror="this.style.display='none'"
+              />
+              <div class="openclaw-icon">🦞</div>
+            </div>
+            <div class="quote-content">
+              <p class="quote-text">
+                Six months ago, everyone was talking about MCPs. And I was like, screw MCPs. Every MCP would be better as a CLI.
+              </p>
+              <div class="quote-attribution">
+                <strong>Peter Steinberger</strong>, Founder of OpenClaw<br />
+                <a href="https://lexfridman.com/peter-steinberger/" target="_blank" rel="noopener">Lex Fridman Podcast #491</a>
+                · <a href="https://twitter.com/steipete" target="_blank" rel="noopener">@steipete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="stats">
           <div class="stats-grid">
             <div class="stat">
-              <div class="stat-number">5</div>
+              <div class="stat-number">10</div>
               <div class="stat-label">CLIs</div>
             </div>
             <div class="stat">
-              <div class="stat-number">~10K</div>
+              <div class="stat-number">~20K</div>
               <div class="stat-label">LOC</div>
             </div>
             <div class="stat">
@@ -736,7 +957,7 @@ Acme Corp (UK)
           <div class="section-header">
             <h2 class="section-title">Available CLIs</h2>
             <p class="section-description">
-              Starting with finance APIs. More coming soon - Stripe, Shopify, and others.
+              Finance APIs to start — Xero, Stripe, QuickBooks, and more. Growing daily.
             </p>
           </div>
 
@@ -805,7 +1026,6 @@ Acme Corp (UK)
         <div class="footer-links">
           <a href="https://github.com/ktmcp-cli">github</a>
           <a href="https://www.npmjs.com/org/ktmcp-cli">npm</a>
-          <a href="https://github.com/ktmcp-cli/billingo">docs</a>
         </div>
       </div>
     </footer>

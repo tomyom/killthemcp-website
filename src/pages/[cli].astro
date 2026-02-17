@@ -2,6 +2,246 @@
 export async function getStaticPaths() {
   const clis = [
     {
+      name: 'Xero',
+      slug: 'xero',
+      package: '@ktmcp-cli/xero',
+      description: 'Accounting and bookkeeping automation',
+      longDescription: 'Xero is a leading cloud-based accounting platform used by millions of small businesses worldwide. This CLI provides full access to the Xero API, allowing you to manage invoices, contacts, bank transactions, and financial reports directly from your terminal.',
+      github: 'https://github.com/ktmcp-cli/xero',
+      category: 'Finance',
+      features: [
+        'Invoice creation and management',
+        'Contact and customer management',
+        'Bank transaction reconciliation',
+        'Financial reporting',
+        'Multi-currency support',
+        'Tax calculation and compliance'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up OAuth2 credentials
+xero auth login --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET
+
+# Verify authentication
+xero auth status`
+        },
+        {
+          title: 'List invoices',
+          code: `# Get all invoices
+xero invoices list
+
+# Filter by status
+xero invoices list --status AUTHORISED
+
+# Export as JSON
+xero invoices list --format json`
+        },
+        {
+          title: 'Create an invoice',
+          code: `# Create a new invoice
+xero invoices create \\
+  --contact-id CONTACT_ID \\
+  --line-items '[{"description":"Service","quantity":1,"unitAmount":100}]' \\
+  --due-date 2026-03-31`
+        }
+      ]
+    },
+    {
+      name: 'TaxJar',
+      slug: 'taxjar',
+      package: '@ktmcp-cli/taxjar',
+      description: 'Sales tax calculation and compliance',
+      longDescription: 'TaxJar provides automated sales tax calculations, nexus tracking, and filing for e-commerce businesses. This CLI gives you direct access to tax rates, transaction reporting, and compliance tools for all US states and international jurisdictions.',
+      github: 'https://github.com/ktmcp-cli/taxjar',
+      category: 'Finance',
+      features: [
+        'Real-time sales tax calculations',
+        'Nexus tracking across jurisdictions',
+        'Transaction import and reporting',
+        'Automated tax filing',
+        'International VAT support',
+        'Product tax category management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Configure API token
+taxjar auth login --api-key YOUR_API_KEY
+
+# Test connection
+taxjar auth status`
+        },
+        {
+          title: 'Calculate tax',
+          code: `# Calculate sales tax for an order
+taxjar tax calculate \\
+  --from-state CA --from-zip 94025 \\
+  --to-state NY --to-zip 10001 \\
+  --amount 100 --shipping 5
+
+# Get tax rates for a location
+taxjar rates get --zip 90210 --state CA`
+        },
+        {
+          title: 'Manage transactions',
+          code: `# List transactions
+taxjar transactions list
+
+# Create a transaction record
+taxjar transactions create \\
+  --transaction-id ORDER123 \\
+  --amount 100 --sales-tax 8.75`
+        }
+      ]
+    },
+    {
+      name: 'Bunq',
+      slug: 'bunq',
+      package: '@ktmcp-cli/bunq',
+      description: 'Modern European banking API',
+      longDescription: 'Bunq is a modern Dutch bank with a developer-friendly API that lets you build powerful financial applications. This CLI provides access to accounts, payments, cards, and real-time notifications for the bunq banking platform.',
+      github: 'https://github.com/ktmcp-cli/bunq',
+      category: 'Finance',
+      features: [
+        'Account management and balances',
+        'Payment creation and tracking',
+        'Card management',
+        'Real-time notifications',
+        'Multi-currency accounts',
+        'Savings goals tracking'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+bunq auth login --api-key YOUR_API_KEY
+
+# Verify connection
+bunq auth status`
+        },
+        {
+          title: 'Manage accounts',
+          code: `# List all accounts
+bunq accounts list
+
+# Get account balance
+bunq accounts get ACCOUNT_ID
+
+# View transactions
+bunq accounts transactions ACCOUNT_ID`
+        },
+        {
+          title: 'Create a payment',
+          code: `# Make a payment
+bunq payments create \\
+  --from-account ACCOUNT_ID \\
+  --amount 50.00 --currency EUR \\
+  --iban NL12BUNQ345678901 \\
+  --description "Invoice payment"`
+        }
+      ]
+    },
+    {
+      name: 'Stripe',
+      slug: 'stripe',
+      package: '@ktmcp-cli/stripe',
+      description: 'Payment infrastructure at scale',
+      longDescription: 'Stripe is the world\'s leading payment infrastructure. This CLI provides access to Stripe\'s comprehensive API for managing payments, customers, subscriptions, invoices, and the full suite of Stripe financial products.',
+      github: 'https://github.com/ktmcp-cli/stripe',
+      category: 'Finance',
+      features: [
+        'Payment intent creation and management',
+        'Customer and subscription management',
+        'Invoice generation',
+        'Refund processing',
+        'Webhook management',
+        'Balance and payout tracking'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Configure API key
+stripe auth login --api-key YOUR_SECRET_KEY
+
+# Test connection
+stripe auth status`
+        },
+        {
+          title: 'List payments',
+          code: `# Get recent payments
+stripe payments list --limit 10
+
+# Filter by status
+stripe payments list --status succeeded
+
+# Export as JSON
+stripe payments list --format json`
+        },
+        {
+          title: 'Manage customers',
+          code: `# List customers
+stripe customers list
+
+# Create a customer
+stripe customers create \\
+  --email customer@example.com \\
+  --name "John Doe"
+
+# Get customer details
+stripe customers get CUSTOMER_ID`
+        }
+      ]
+    },
+    {
+      name: 'QuickBooks',
+      slug: 'quickbooks',
+      package: '@ktmcp-cli/quickbooks',
+      description: 'Small business accounting and invoicing',
+      longDescription: 'QuickBooks is the most popular accounting software for small businesses. This CLI provides access to the QuickBooks Online API, allowing you to manage invoices, customers, vendors, expenses, and financial reports from the command line.',
+      github: 'https://github.com/ktmcp-cli/quickbooks',
+      category: 'Finance',
+      features: [
+        'Invoice creation and management',
+        'Customer and vendor management',
+        'Expense tracking',
+        'Bank transaction import',
+        'Financial reporting (P&L, Balance Sheet)',
+        'Tax and payroll data access'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up OAuth2 credentials
+quickbooks auth login \\
+  --client-id YOUR_CLIENT_ID \\
+  --client-secret YOUR_CLIENT_SECRET
+
+# Verify authentication
+quickbooks auth status`
+        },
+        {
+          title: 'List invoices',
+          code: `# Get all invoices
+quickbooks invoices list
+
+# Filter unpaid invoices
+quickbooks invoices list --balance gt:0
+
+# Export as JSON
+quickbooks invoices list --format json`
+        },
+        {
+          title: 'Create an invoice',
+          code: `# Create a new invoice
+quickbooks invoices create \\
+  --customer-id 1 \\
+  --items '[{"name":"Consulting","qty":5,"rate":150}]' \\
+  --due-date 2026-03-31`
+        }
+      ]
+    },
+    {
       name: 'Billingo',
       slug: 'billingo',
       package: '@ktmcp-cli/billingo',
@@ -491,6 +731,84 @@ const { cli } = Astro.props;
         margin-bottom: 1.5rem;
       }
 
+      /* Peter Steinberger quote */
+      .quote-block {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 3rem 0;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .quote-block-avatar {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .quote-block-avatar img {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        border: 2px solid var(--accent);
+        object-fit: cover;
+      }
+
+      .openclaw-emoji {
+        font-size: 1.75rem;
+        line-height: 1;
+      }
+
+      .quote-block-content blockquote {
+        font-size: 1rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      .quote-block-content blockquote::before {
+        content: '"';
+        color: var(--accent);
+        font-size: 1.5rem;
+        line-height: 0;
+        vertical-align: -0.4rem;
+        margin-right: 0.1rem;
+      }
+
+      .quote-block-content blockquote::after {
+        content: '"';
+        color: var(--accent);
+        font-size: 1.5rem;
+        line-height: 0;
+        vertical-align: -0.4rem;
+        margin-left: 0.1rem;
+      }
+
+      .quote-block-attribution {
+        font-size: 0.85rem;
+        color: var(--text-dimmed);
+      }
+
+      .quote-block-attribution strong {
+        color: var(--accent);
+      }
+
+      .quote-block-attribution a {
+        color: var(--text-dimmed);
+        text-decoration: none;
+      }
+
+      .quote-block-attribution a:hover {
+        color: var(--accent);
+      }
+
       footer {
         text-align: center;
         padding: 4rem 0 2rem;
@@ -520,6 +838,12 @@ const { cli } = Astro.props;
         .btn {
           justify-content: center;
         }
+
+        .quote-block {
+          flex-direction: column;
+          gap: 1.25rem;
+          text-align: center;
+        }
       }
     </style>
   </head>
@@ -541,6 +865,27 @@ const { cli } = Astro.props;
           <a href={`https://www.npmjs.com/package/${cli.package}`} class="btn btn-secondary">npm Package</a>
         </div>
       </header>
+
+      <div class="quote-block">
+        <div class="quote-block-avatar">
+          <img
+            src="https://pbs.twimg.com/profile_images/1593545438/steipete_400x400.jpg"
+            alt="Peter Steinberger"
+            onerror="this.style.display='none'"
+          />
+          <div class="openclaw-emoji">🦞</div>
+        </div>
+        <div class="quote-block-content">
+          <blockquote>
+            Six months ago, everyone was talking about MCPs. And I was like, screw MCPs. Every MCP would be better as a CLI.
+          </blockquote>
+          <div class="quote-block-attribution">
+            <strong>Peter Steinberger</strong>, Founder of OpenClaw ·
+            <a href="https://lexfridman.com/peter-steinberger/" target="_blank" rel="noopener">Lex Fridman Podcast #491</a>
+            · <a href="https://twitter.com/steipete" target="_blank" rel="noopener">@steipete</a>
+          </div>
+        </div>
+      </div>
 
       <section class="install-section">
         <h2>Quick Start</h2>
