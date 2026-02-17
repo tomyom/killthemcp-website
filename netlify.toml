@@ -15,6 +15,38 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# 301 redirects for old CLI URLs (before adding -cli suffix)
+[[redirects]]
+  from = "/billingo"
+  to = "/billingo-cli"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/klarna"
+  to = "/klarna-cli"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nowpayments"
+  to = "/nowpayments-cli"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nordigen"
+  to = "/nordigen-cli"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/codat"
+  to = "/codat-cli"
+  status = 301
+  force = true
+
+# SPA fallback - must be last
 [[redirects]]
   from = "/*"
   to = "/index.html"
