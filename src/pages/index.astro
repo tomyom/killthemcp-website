@@ -1436,20 +1436,27 @@ Amex Platinum    -$1,240.00`
         /* Stats on mobile */
         .stats {
           margin: 3rem 0 4rem;
-          padding: 2rem 1rem;
+          padding: 2.5rem 1rem 1.5rem;
+        }
+
+        .stats::before {
+          left: 1rem;
+          font-size: 0.75rem;
+          top: -1.2rem;
         }
 
         .stats-grid {
           grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
+          gap: 1.5rem;
         }
 
         .stat-number {
-          font-size: 2rem;
+          font-size: 1.75rem;
         }
 
         .stat-label {
-          font-size: 0.65rem;
+          font-size: 0.6rem;
+          letter-spacing: 0.1em;
         }
 
         /* Section spacing */
@@ -1522,18 +1529,28 @@ Amex Platinum    -$1,240.00`
 
         /* Quote section on mobile */
         .quote-section {
-          padding: 2rem 1.5rem;
+          padding: 2rem 1rem;
           margin: 4rem 0;
         }
 
         .quote-inner {
           flex-direction: column;
           gap: 1.5rem;
-          text-align: center;
+          text-align: left;
         }
 
         .quote-text {
-          font-size: 0.95rem;
+          font-size: 1rem;
+          font-family: Georgia, 'Times New Roman', serif;
+          font-style: italic;
+          line-height: 1.7;
+          word-break: normal;
+          overflow-wrap: break-word;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+          font-family: Georgia, 'Times New Roman', serif;
         }
 
         /* Navigation on mobile */
