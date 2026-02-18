@@ -1,6 +1,92 @@
 ---
 const clis = [
   {
+    name: 'Xero',
+    slug: 'xero',
+    package: '@ktmcp-cli/xero',
+    description: 'Accounting and bookkeeping automation',
+    github: 'https://github.com/ktmcp-cli/xero',
+    category: 'Finance',
+    terminalExample: `$ xero invoices list --status AUTHORISED
+
+✓ Found 18 invoices
+┌──────────┬──────────────┬────────────┬────────────┐
+│ InvNum   │ Contact      │ AmtDue     │ DueDate    │
+├──────────┼──────────────┼────────────┼────────────┤
+│ INV-0042 │ Acme Corp    │ 2,150.00   │ 2026-03-01 │
+│ INV-0041 │ Tech Ltd     │ 890.00     │ 2026-02-28 │
+└──────────┴──────────────┴────────────┴────────────┘`
+  },
+  {
+    name: 'TaxJar',
+    slug: 'taxjar',
+    package: '@ktmcp-cli/taxjar',
+    description: 'Sales tax calculation and compliance',
+    github: 'https://github.com/ktmcp-cli/taxjar',
+    category: 'Finance',
+    terminalExample: `$ taxjar rates get --zip 90210 --state CA
+
+✓ Tax rates for 90210
+{
+  "combined_rate": 0.1025,
+  "state_rate": 0.0725,
+  "county_rate": 0.01,
+  "city_rate": 0.02
+}`
+  },
+  {
+    name: 'Bunq',
+    slug: 'bunq',
+    package: '@ktmcp-cli/bunq',
+    description: 'Modern European banking API',
+    github: 'https://github.com/ktmcp-cli/bunq',
+    category: 'Finance',
+    terminalExample: `$ bunq accounts list
+
+✓ Your bunq accounts (2)
+
+Personal (EUR)
+└─ Balance: €4,231.50
+
+Savings Goal: Vacation
+└─ Balance: €1,750.00 / €3,000.00`
+  },
+  {
+    name: 'Stripe',
+    slug: 'stripe',
+    package: '@ktmcp-cli/stripe',
+    description: 'Payment infrastructure at scale',
+    github: 'https://github.com/ktmcp-cli/stripe',
+    category: 'Finance',
+    terminalExample: `$ stripe payments list --limit 5
+
+✓ Recent payments
+┌──────────────┬──────────┬──────────┬───────────┐
+│ ID           │ Amount   │ Currency │ Status    │
+├──────────────┼──────────┼──────────┼───────────┤
+│ pi_3Ox...abc │ 4,999    │ usd      │ succeeded │
+│ pi_3Ox...def │ 1,200    │ eur      │ succeeded │
+└──────────────┴──────────┴──────────┴───────────┘`
+  },
+  {
+    name: 'QuickBooks',
+    slug: 'quickbooks',
+    package: '@ktmcp-cli/quickbooks',
+    description: 'Small business accounting and invoicing',
+    github: 'https://github.com/ktmcp-cli/quickbooks',
+    category: 'Finance',
+    terminalExample: `$ quickbooks invoices create \\
+  --customer-id 1 --amount 1500
+
+✓ Invoice created
+{
+  "Id": "103",
+  "DocNumber": "INV-1003",
+  "TotalAmt": 1500.00,
+  "Balance": 1500.00
+}`
+  },
+  {
     name: 'Billingo',
     slug: 'billingo-cli',
     package: '@ktmcp-cli/billingo',
@@ -176,20 +262,6 @@ Commands:
 ✓ Found 8 videos
 intro.mp4     HD  2:34  public
 demo.mp4      4K  5:12  private`
-  },
-  {
-    name: 'Bunq',
-    slug: 'bunq-cli',
-    package: '@ktmcp-cli/bunq',
-    description: 'Neobank accounts, payments, and cards',
-    github: 'https://github.com/ktmcp-cli/bunq',
-    category: 'Finance',
-    terminalExample: `$ bunq accounts list
-
-✓ Connected accounts (2)
-
-Primary Account | €4,231.50
-Savings Jar     | €1,800.00`
   },
   {
     name: 'CallFire',
@@ -498,19 +570,6 @@ Commands:
   get     Get a resource`
   },
   {
-    name: 'QuickBooks',
-    slug: 'quickbooks-cli',
-    package: '@ktmcp-cli/quickbooks',
-    description: 'Accounting, invoices, and customers',
-    github: 'https://github.com/ktmcp-cli/quickbooks',
-    category: 'Finance',
-    terminalExample: `$ quickbooks invoices list
-
-✓ Found 34 invoices
-INV-001  Acme Corp   $1,250  paid
-INV-002  Tech Ltd    $890    overdue`
-  },
-  {
     name: 'SendGrid',
     slug: 'sendgrid-cli',
     package: '@ktmcp-cli/sendgrid',
@@ -583,19 +642,6 @@ Commands:
   get     Get a resource`
   },
   {
-    name: 'Stripe',
-    slug: 'stripe-cli',
-    package: '@ktmcp-cli/stripe',
-    description: 'Payments, customers, subscriptions',
-    github: 'https://github.com/ktmcp-cli/stripe',
-    category: 'Finance',
-    terminalExample: `$ stripe customers list --limit 5
-
-✓ Found 4,821 customers
-cus_abc  john@acme.com   $12,400 LTV
-cus_def  jane@tech.com   $8,200 LTV`
-  },
-  {
     name: 'Taxamo',
     slug: 'taxamo-cli',
     package: '@ktmcp-cli/taxamo',
@@ -611,20 +657,6 @@ Commands:
   auth    Authenticate with API
   list    List resources
   get     Get a resource`
-  },
-  {
-    name: 'TaxJar',
-    slug: 'taxjar-cli',
-    package: '@ktmcp-cli/taxjar',
-    description: 'Sales tax calculation and reporting',
-    github: 'https://github.com/ktmcp-cli/taxjar',
-    category: 'Finance',
-    terminalExample: `$ taxjar tax calculate \\
-  --to-zip 90210 --amount 100
-
-✓ Tax calculated
-Rate: 10.25%
-Tax: $10.25`
   },
   {
     name: 'Telnyx',
@@ -753,19 +785,6 @@ Louvre Skip-Line   ★4.8  $55`
 ✓ Call initiated
 ID: call_abc123
 Status: ringing`
-  },
-  {
-    name: 'Xero',
-    slug: 'xero-cli',
-    package: '@ktmcp-cli/xero',
-    description: 'Cloud accounting and invoices API',
-    github: 'https://github.com/ktmcp-cli/xero',
-    category: 'Finance',
-    terminalExample: `$ xero invoices list --status AUTHORISED
-
-✓ Found 18 invoices
-INV-0042  Acme Corp   $2,400  due tomorrow
-INV-0041  Tech Ltd    $1,100  due in 14 days`
   },
   {
     name: 'Yodlee',
@@ -1063,8 +1082,14 @@ Amex Platinum    -$1,240.00`
 
       .cli-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
         gap: 2rem;
+      }
+
+      @media (min-width: 1400px) {
+        .cli-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
 
       .cli-card {
@@ -1091,19 +1116,19 @@ Amex Platinum    -$1,240.00`
         background: var(--terminal-black);
         padding: 0 0.5rem;
         color: var(--terminal-green-dim);
-        font-size: 0.75rem;
+        font-size: 0.8rem;
       }
 
       .terminal-window {
         padding: 1.5rem;
         background: var(--terminal-black);
         border-bottom: 1px solid var(--terminal-green-dim);
-        min-height: 240px;
+        min-height: 220px;
       }
 
       .terminal-output {
-        font-size: 0.75rem;
-        line-height: 1.5;
+        font-size: 0.875rem;
+        line-height: 1.6;
         color: var(--terminal-text);
         white-space: pre;
         overflow-x: auto;
@@ -1157,6 +1182,170 @@ Amex Platinum    -$1,240.00`
       .why-item p {
         color: var(--terminal-text-dim);
         font-size: 0.85rem;
+      }
+
+      /* Peter Steinberger quote section */
+      .quote-section {
+        margin: 6rem 0;
+        padding: 3rem;
+        background: var(--terminal-bg);
+        border: 2px solid var(--terminal-green-dim);
+        position: relative;
+      }
+
+      .quote-section::before {
+        content: '$ echo "the origin story"';
+        position: absolute;
+        top: -1.5rem;
+        left: 2rem;
+        background: var(--terminal-black);
+        padding: 0 1rem;
+        color: var(--terminal-green-dim);
+        font-size: 0.875rem;
+      }
+
+      .quote-inner {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .quote-avatar {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .quote-avatar img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid var(--terminal-green);
+        object-fit: cover;
+        filter: grayscale(20%);
+      }
+
+      .openclaw-icon {
+        font-size: 2.5rem;
+        line-height: 1;
+      }
+
+      .quote-content {
+        flex: 1;
+      }
+
+      .quote-text {
+        font-size: 1.1rem;
+        color: var(--terminal-text);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+      }
+
+      .quote-text::before {
+        content: '"';
+        color: var(--terminal-green);
+        font-size: 2rem;
+        line-height: 0;
+        vertical-align: -0.5rem;
+        margin-right: 0.25rem;
+      }
+
+      .quote-text::after {
+        content: '"';
+        color: var(--terminal-green);
+        font-size: 2rem;
+        line-height: 0;
+        vertical-align: -0.5rem;
+        margin-left: 0.25rem;
+      }
+
+      .quote-attribution {
+        color: var(--terminal-green-dim);
+        font-size: 0.85rem;
+      }
+
+      .quote-attribution strong {
+        color: var(--terminal-green);
+      }
+
+      .quote-attribution a {
+        color: var(--terminal-green-dim);
+        text-decoration: none;
+      }
+
+      .quote-attribution a:hover {
+        color: var(--terminal-green);
+      }
+
+      /* How to use section */
+      .how-to-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .how-to-step {
+        background: var(--terminal-bg);
+        border: 1px solid var(--terminal-green-dim);
+        padding: 2rem;
+        position: relative;
+      }
+
+      .how-to-step::before {
+        content: attr(data-step);
+        position: absolute;
+        top: -1rem;
+        left: 1.5rem;
+        background: var(--terminal-black);
+        padding: 0 0.75rem;
+        color: var(--terminal-green);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-shadow: var(--glow);
+      }
+
+      .how-to-step h3 {
+        font-size: 1rem;
+        color: var(--terminal-green);
+        margin-bottom: 0.75rem;
+      }
+
+      .how-to-step h3::before {
+        content: '$ ';
+        opacity: 0.6;
+      }
+
+      .how-to-step p {
+        color: var(--terminal-text-dim);
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+
+      .code-block {
+        background: var(--terminal-black);
+        border: 1px solid var(--terminal-green-dim);
+        border-left: 3px solid var(--terminal-green);
+        padding: 1.25rem 1.5rem;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        color: var(--terminal-text);
+        white-space: pre;
+        overflow-x: auto;
+        display: block;
+        width: 100%;
+      }
+
+      .code-block .comment {
+        color: var(--terminal-text-dim);
+      }
+
+      .how-to-note {
+        margin-top: 1rem;
+        color: var(--terminal-text-dim);
+        font-size: 0.8rem;
       }
 
       /* Footer */
@@ -1276,6 +1465,16 @@ Amex Platinum    -$1,240.00`
           font-size: 0.85rem;
         }
 
+        /* How to use on mobile */
+        .how-to-step {
+          padding: 1.5rem;
+        }
+
+        .code-block {
+          font-size: 0.75rem;
+          padding: 1rem;
+        }
+
         /* CLI cards on mobile */
         .cli-grid {
           grid-template-columns: 1fr;
@@ -1319,6 +1518,22 @@ Amex Platinum    -$1,240.00`
 
         .why-item p {
           font-size: 0.8rem;
+        }
+
+        /* Quote section on mobile */
+        .quote-section {
+          padding: 2rem 1.5rem;
+          margin: 4rem 0;
+        }
+
+        .quote-inner {
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: center;
+        }
+
+        .quote-text {
+          font-size: 0.95rem;
         }
 
         /* Navigation on mobile */
@@ -1410,19 +1625,42 @@ Amex Platinum    -$1,240.00`
           </div>
         </section>
 
+        <div class="quote-section">
+          <div class="quote-inner">
+            <div class="quote-avatar">
+              <img
+                src="https://pbs.twimg.com/profile_images/1593545438/steipete_400x400.jpg"
+                alt="Peter Steinberger"
+                onerror="this.style.display='none'"
+              />
+              <div class="openclaw-icon">🦞</div>
+            </div>
+            <div class="quote-content">
+              <p class="quote-text">
+                Six months ago, everyone was talking about MCPs. And I was like, screw MCPs. Every MCP would be better as a CLI.
+              </p>
+              <div class="quote-attribution">
+                <strong>Peter Steinberger</strong>, Founder of OpenClaw<br />
+                <a href="https://lexfridman.com/peter-steinberger/" target="_blank" rel="noopener">Lex Fridman Podcast #491</a>
+                · <a href="https://twitter.com/steipete" target="_blank" rel="noopener">@steipete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="stats">
           <div class="stats-grid">
             <div class="stat">
-              <div class="stat-number">53</div>
-              <div class="stat-label">CLIs</div>
+              <div class="stat-number">{clis.length}</div>
+              <div class="stat-label">CLIs Published</div>
             </div>
             <div class="stat">
-              <div class="stat-number">~10K</div>
-              <div class="stat-label">LOC</div>
+              <div class="stat-number">3/hr</div>
+              <div class="stat-label">Release Pace</div>
             </div>
             <div class="stat">
-              <div class="stat-number">133+</div>
-              <div class="stat-label">Docs</div>
+              <div class="stat-number">1,000</div>
+              <div class="stat-label">Goal</div>
             </div>
             <div class="stat">
               <div class="stat-number">MIT</div>
@@ -1431,11 +1669,66 @@ Amex Platinum    -$1,240.00`
           </div>
         </div>
 
+        <section id="how-to-use">
+          <div class="section-header">
+            <h2 class="section-title">How to use</h2>
+            <p class="section-description">
+              So you've decided MCPs are unnecessary BS. We're with you. Here's what you need to get started.
+            </p>
+          </div>
+
+          <div class="how-to-steps">
+            <div class="how-to-step" data-step="// step 1 — add the skill">
+              <h3>Add KTMCP to your agent</h3>
+              <p>Copy this into your agent's SKILL.md, system prompt, or <code style="color: var(--terminal-green); font-size: 0.85rem;">~/.claude/CLAUDE.md</code>:</p>
+              <pre class="code-block"><span class="comment"># KTMCP — CLI tools for APIs (no MCP servers needed)</span>
+
+You have access to ktmcp CLIs — lightweight command-line tools for popular APIs.
+Instead of spinning up MCP servers, use these CLIs directly via bash.
+
+<span class="comment">## Finding CLIs</span>
+Browse: https://killthemcp.com/llms.txt
+npm:    https://npmjs.com/org/ktmcp-cli
+GitHub: https://github.com/ktmcp-cli
+
+<span class="comment">## Using a CLI</span>
+npm install -g @ktmcp-cli/&#123;name&#125;   <span class="comment"># install once</span>
+&#123;name&#125; --help                          <span class="comment"># list commands</span>
+&#123;name&#125; &#123;resource&#125; list               <span class="comment"># always returns JSON</span>
+
+<span class="comment">## Example</span>
+npm install -g @ktmcp-cli/stripe
+stripe payments list
+stripe customers get --id cus_abc123</pre>
+            </div>
+
+            <div class="how-to-step" data-step="// step 2 — point to llms.txt">
+              <h3>Reference the full catalog</h3>
+              <p>Point your agent at <a href="/llms.txt" style="color: var(--terminal-green); text-decoration: none;">killthemcp.com/llms.txt</a> — a machine-readable index of every available CLI, updated automatically as new ones ship:</p>
+              <pre class="code-block">https://killthemcp.com/llms.txt</pre>
+              <p class="how-to-note">Works with any LLM that supports URL context — Claude Projects, ChatGPT file uploads, Cursor rules, etc.</p>
+            </div>
+
+            <div class="how-to-step" data-step="// step 3 — find the right CLI">
+              <h3>Find a CLI for any API</h3>
+              <pre class="code-block"><span class="comment"># Search npm directly</span>
+npm search @ktmcp-cli
+
+<span class="comment"># Or ask your agent</span>
+"Check killthemcp.com/llms.txt — is there a CLI for [service]?"
+
+<span class="comment"># Or browse GitHub</span>
+https://github.com/ktmcp-cli</pre>
+              <p class="how-to-note">New CLIs ship every hour. If yours isn't here yet, <a href="https://github.com/ktmcp-cli" style="color: var(--terminal-green-dim); text-decoration: none;">open an issue</a>.</p>
+            </div>
+          </div>
+        </section>
+
         <section id="clis">
           <div class="section-header">
             <h2 class="section-title">Available CLIs</h2>
             <p class="section-description">
-              53 production-ready CLIs across finance, travel, messaging, productivity, media, IoT, and more.
+              Finance APIs to start — Xero, Stripe, QuickBooks, and more. Growing daily.
             </p>
           </div>
 
@@ -1504,7 +1797,6 @@ Amex Platinum    -$1,240.00`
         <div class="footer-links">
           <a href="https://github.com/ktmcp-cli">github</a>
           <a href="https://www.npmjs.com/org/ktmcp-cli">npm</a>
-          <a href="https://github.com/ktmcp-cli/billingo">docs</a>
         </div>
       </div>
     </footer>
