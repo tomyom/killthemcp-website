@@ -239,6 +239,1835 @@ codat reports balance-sheet COMPANY_ID \\
 codat reports profit-loss COMPANY_ID --format json`
         }
       ]
+    },
+    {
+      name: 'Ably',
+      slug: 'ably-cli',
+      package: '@ktmcp-cli/ably',
+      description: 'Manage Ably apps, keys, and queues',
+      longDescription: 'Ably provides a realtime messaging platform with pub/sub, presence, and history. This CLI lets you manage your Ably Control API resources including apps, API keys, namespaces, and queues from the terminal.',
+      github: 'https://github.com/ktmcp-cli/ably',
+      category: 'Messaging',
+      features: [
+        'Manage apps and API keys',
+        'Configure namespaces and channels',
+        'Manage message queues',
+        'View usage statistics',
+        'Token management',
+        'Control API access'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+ably auth login --api-key YOUR_API_KEY
+
+# Verify authentication
+ably auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List all apps
+ably apps list
+
+# List API keys for an app
+ably keys list --app-id APP_ID`
+        }
+      ]
+    },
+    {
+      name: 'Adyen',
+      slug: 'adyen-cli',
+      package: '@ktmcp-cli/adyen',
+      description: 'Adyen Checkout API integration',
+      longDescription: 'Adyen is a global payment platform used by leading businesses worldwide. This CLI provides access to the Adyen Checkout API for processing payments, managing payment methods, and handling transactions.',
+      github: 'https://github.com/ktmcp-cli/adyen',
+      category: 'Finance',
+      features: [
+        'Process payments globally',
+        'Manage payment methods',
+        'Handle refunds and captures',
+        'Payment status tracking',
+        'Fraud prevention tools',
+        'Multi-currency support'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API credentials
+adyen auth login --api-key YOUR_API_KEY --merchant-account YOUR_ACCOUNT
+
+# Verify connection
+adyen auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List payment methods
+adyen payment-methods list --country US --currency USD
+
+# Get payment details
+adyen payments get PAYMENT_ID`
+        }
+      ]
+    },
+    {
+      name: 'AdyenPayout',
+      slug: 'adyenpayout-cli',
+      package: '@ktmcp-cli/adyenpayout',
+      description: 'Adyen Payout API for disbursements',
+      longDescription: 'The Adyen Payout API enables you to disburse funds to your customers or suppliers. This CLI provides access to payout submission, confirmation, and cancellation workflows for managing outgoing payments.',
+      github: 'https://github.com/ktmcp-cli/adyenpayout',
+      category: 'Finance',
+      features: [
+        'Submit payout requests',
+        'Confirm or cancel payouts',
+        'Store payout details',
+        'Multi-currency disbursements',
+        'Payout status tracking',
+        'Batch payout processing'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+adyenpayout auth login --api-key YOUR_API_KEY
+
+# Verify connection
+adyenpayout auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List recent payouts
+adyenpayout payouts list
+
+# Get payout details
+adyenpayout payouts get PAYOUT_ID`
+        }
+      ]
+    },
+    {
+      name: 'Amadeus',
+      slug: 'amadeus-cli',
+      package: '@ktmcp-cli/amadeus',
+      description: 'Flights, hotels, and travel search',
+      longDescription: 'Amadeus provides travel technology APIs used by airlines, travel agencies, and booking platforms. This CLI gives you direct access to flight search, hotel availability, seat maps, and travel inspiration data.',
+      github: 'https://github.com/ktmcp-cli/amadeus',
+      category: 'Travel',
+      features: [
+        'Search flights and fares',
+        'Hotel availability and rates',
+        'Seat map access',
+        'Travel inspiration data',
+        'Airport and airline info',
+        'Flight status tracking'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API credentials
+amadeus auth login --client-id YOUR_ID --client-secret YOUR_SECRET
+
+# Verify connection
+amadeus auth status`
+        },
+        {
+          title: 'Search flights',
+          code: `# Search one-way flights
+amadeus flights search \\
+  --origin JFK --destination LHR \\
+  --departure 2026-03-15 --adults 1
+
+# Get offer details
+amadeus flights get OFFER_ID`
+        }
+      ]
+    },
+    {
+      name: 'Apideck',
+      slug: 'apideck-cli',
+      package: '@ktmcp-cli/apideck',
+      description: 'Unified CRM API across platforms',
+      longDescription: 'Apideck provides a unified API layer that lets you connect to dozens of CRM, HRIS, ATS, and accounting platforms through a single integration. This CLI lets you manage connections and query normalized data from your terminal.',
+      github: 'https://github.com/ktmcp-cli/apideck',
+      category: 'Productivity',
+      features: [
+        'Unified CRM data access',
+        'Manage API connections',
+        'Contacts and companies',
+        'Deals and pipelines',
+        'Multi-platform support',
+        'Normalized data schemas'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+apideck auth login --api-key YOUR_API_KEY --app-id YOUR_APP_ID
+
+# Verify connection
+apideck auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List CRM contacts
+apideck crm contacts list
+
+# Get a specific contact
+apideck crm contacts get CONTACT_ID`
+        }
+      ]
+    },
+    {
+      name: 'ApiVideo',
+      slug: 'apivideo-cli',
+      package: '@ktmcp-cli/apivideo',
+      description: 'Video hosting and transcoding API',
+      longDescription: 'api.video is a video infrastructure service providing video hosting, transcoding, delivery, and streaming. This CLI lets you upload videos, manage collections, generate tokens, and retrieve analytics from the terminal.',
+      github: 'https://github.com/ktmcp-cli/apivideo',
+      category: 'Media',
+      features: [
+        'Upload and manage videos',
+        'Generate upload tokens',
+        'Live streaming management',
+        'Video analytics access',
+        'Caption and chapter management',
+        'Player customization'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+apivideo auth login --api-key YOUR_API_KEY
+
+# Verify connection
+apivideo auth status`
+        },
+        {
+          title: 'Manage videos',
+          code: `# List all videos
+apivideo videos list
+
+# Upload a video
+apivideo videos upload --file ./video.mp4 --title "My Video"
+
+# Get video details
+apivideo videos get VIDEO_ID`
+        }
+      ]
+    },
+    {
+      name: 'Bunq',
+      slug: 'bunq-cli',
+      package: '@ktmcp-cli/bunq',
+      description: 'Neobank accounts, payments, and cards',
+      longDescription: 'Bunq is a Dutch neobank with a developer-friendly API. This CLI provides access to accounts, payments, cards, and savings goals, letting you automate your banking operations directly from the terminal.',
+      github: 'https://github.com/ktmcp-cli/bunq',
+      category: 'Finance',
+      features: [
+        'View account balances',
+        'Make and receive payments',
+        'Manage virtual cards',
+        'Savings jar management',
+        'Transaction history access',
+        'Budget tracking'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+bunq auth login --api-key YOUR_API_KEY
+
+# Verify connection
+bunq auth status`
+        },
+        {
+          title: 'Manage accounts',
+          code: `# List all accounts
+bunq accounts list
+
+# Get account balance
+bunq accounts get ACCOUNT_ID
+
+# List transactions
+bunq payments list --account-id ACCOUNT_ID`
+        }
+      ]
+    },
+    {
+      name: 'CallFire',
+      slug: 'callfire-cli',
+      package: '@ktmcp-cli/callfire',
+      description: 'SMS and voice broadcasting API',
+      longDescription: 'CallFire is a cloud communications platform for SMS messaging and voice broadcasting. This CLI lets you create and manage campaigns, send text messages, make auto-dial calls, and track results from your terminal.',
+      github: 'https://github.com/ktmcp-cli/callfire',
+      category: 'Messaging',
+      features: [
+        'Create SMS campaigns',
+        'Voice broadcasting',
+        'Contact list management',
+        'Campaign analytics',
+        'Auto-dial scheduling',
+        'Opt-out management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+callfire auth login --username YOUR_USER --password YOUR_PASS
+
+# Verify connection
+callfire auth status`
+        },
+        {
+          title: 'Send SMS',
+          code: `# Send a text message
+callfire texts send \\
+  --to 15550001234 \\
+  --message "Hello from CallFire!"
+
+# List text broadcasts
+callfire texts list`
+        }
+      ]
+    },
+    {
+      name: 'Chaingateway',
+      slug: 'chaingateway-cli',
+      package: '@ktmcp-cli/chaingateway',
+      description: 'Blockchain payment gateway API',
+      longDescription: 'Chaingateway provides a blockchain payments API for receiving and sending cryptocurrency payments. This CLI lets you manage addresses, check balances, send transactions, and monitor the blockchain from your terminal.',
+      github: 'https://github.com/ktmcp-cli/chaingateway',
+      category: 'Finance',
+      features: [
+        'Generate blockchain addresses',
+        'Send cryptocurrency payments',
+        'Monitor transactions',
+        'Check wallet balances',
+        'Webhook notifications',
+        'Multi-chain support'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API credentials
+chaingateway auth login --api-key YOUR_API_KEY
+
+# Verify connection
+chaingateway auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List addresses
+chaingateway addresses list
+
+# Get address balance
+chaingateway addresses balance ADDRESS`
+        }
+      ]
+    },
+    {
+      name: 'ClickSend',
+      slug: 'clicksend-cli',
+      package: '@ktmcp-cli/clicksend',
+      description: 'SMS and multi-channel messaging API',
+      longDescription: 'ClickSend is a multi-channel messaging platform supporting SMS, email, voice, fax, and direct mail. This CLI provides programmatic access to send messages, manage contacts, and view delivery reports from the terminal.',
+      github: 'https://github.com/ktmcp-cli/clicksend',
+      category: 'Messaging',
+      features: [
+        'Send SMS messages',
+        'Email campaigns',
+        'Voice broadcasting',
+        'Contact list management',
+        'Delivery reporting',
+        'MMS support'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+clicksend auth login --username YOUR_USER --api-key YOUR_KEY
+
+# Verify connection
+clicksend auth status`
+        },
+        {
+          title: 'Send SMS',
+          code: `# Send a text message
+clicksend sms send \\
+  --to +15550001234 \\
+  --message "Hello from ClickSend!"
+
+# Check message history
+clicksend sms history`
+        }
+      ]
+    },
+    {
+      name: 'ClickUp',
+      slug: 'clickup-cli',
+      package: '@ktmcp-cli/clickup',
+      description: 'Tasks, spaces, and project management',
+      longDescription: 'ClickUp is an all-in-one project management platform. This CLI gives you full access to tasks, spaces, lists, folders, goals, and time tracking so you can automate your workflow directly from the terminal.',
+      github: 'https://github.com/ktmcp-cli/clickup',
+      category: 'Productivity',
+      features: [
+        'Create and manage tasks',
+        'Workspace and space management',
+        'Time tracking',
+        'Goal tracking',
+        'Comment and attachment handling',
+        'Custom field support'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API token
+clickup auth login --api-token YOUR_TOKEN
+
+# Verify connection
+clickup auth status`
+        },
+        {
+          title: 'Manage tasks',
+          code: `# List tasks in a space
+clickup tasks list --space-id SPACE_ID
+
+# Create a new task
+clickup tasks create \\
+  --list-id LIST_ID \\
+  --name "New task" \\
+  --priority high
+
+# Update a task
+clickup tasks update TASK_ID --status done`
+        }
+      ]
+    },
+    {
+      name: 'ClimateCom',
+      slug: 'climatecom-cli',
+      package: '@ktmcp-cli/climatecom',
+      description: 'Climate FieldView agricultural platform',
+      longDescription: 'Climate FieldView is a digital agriculture platform for farmers and agronomists. This CLI provides access to field boundaries, planting data, harvest records, and agronomic insights via the FieldView API.',
+      github: 'https://github.com/ktmcp-cli/climatecom',
+      category: 'Other',
+      features: [
+        'Field boundary management',
+        'Planting data access',
+        'Harvest records',
+        'Agronomic insights',
+        'Equipment integration',
+        'Season data management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up OAuth credentials
+climatecom auth login --client-id YOUR_ID --client-secret YOUR_SECRET
+
+# Verify connection
+climatecom auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List fields
+climatecom fields list
+
+# Get field details
+climatecom fields get FIELD_ID`
+        }
+      ]
+    },
+    {
+      name: 'Elmah.io',
+      slug: 'elmahio-cli',
+      package: '@ktmcp-cli/elmahio',
+      description: 'Error logging and monitoring API',
+      longDescription: 'Elmah.io is a cloud-based error logging and monitoring service for .NET applications. This CLI lets you query error logs, manage deployments, mark errors as fixed, and configure uptime monitoring from the terminal.',
+      github: 'https://github.com/ktmcp-cli/elmahio',
+      category: 'Other',
+      features: [
+        'Query error logs',
+        'Deployment tracking',
+        'Mark errors as fixed',
+        'Uptime monitoring',
+        'Heartbeat management',
+        'Log search and filter'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+elmahio auth login --api-key YOUR_API_KEY
+
+# Verify connection
+elmahio auth status`
+        },
+        {
+          title: 'Query errors',
+          code: `# List recent errors
+elmahio errors list --log-id LOG_ID --limit 10
+
+# Search for specific errors
+elmahio errors search --query "NullReferenceException"
+
+# Mark error as fixed
+elmahio errors fix ERROR_ID --log-id LOG_ID`
+        }
+      ]
+    },
+    {
+      name: 'ExchangeRate',
+      slug: 'exchangerate-cli',
+      package: '@ktmcp-cli/exchangerate',
+      description: 'Real-time currency exchange rates',
+      longDescription: 'ExchangeRate-API provides reliable and up-to-date currency exchange rate data. This CLI gives you access to real-time rates, historical data, and currency conversion calculations for 160+ currencies.',
+      github: 'https://github.com/ktmcp-cli/exchangerate',
+      category: 'Finance',
+      features: [
+        'Real-time exchange rates',
+        'Historical rate data',
+        'Currency conversion',
+        '160+ currencies supported',
+        'Bulk conversion support',
+        'Rate change tracking'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+exchangerate auth login --api-key YOUR_API_KEY
+
+# Verify connection
+exchangerate auth status`
+        },
+        {
+          title: 'Get rates',
+          code: `# Get latest rates for USD
+exchangerate rates get --base USD
+
+# Convert currency
+exchangerate convert --from USD --to EUR --amount 100
+
+# Get historical rates
+exchangerate rates history --base USD --date 2025-01-01`
+        }
+      ]
+    },
+    {
+      name: 'Faretrotter',
+      slug: 'faretrotter-cli',
+      package: '@ktmcp-cli/faretrotter',
+      description: 'Multi-city travel search and fares',
+      longDescription: 'Faretrotter is a travel API providing access to multi-city trip planning and fare comparison. This CLI lets you search for flights across multiple cities, compare fares, and explore travel itineraries from the terminal.',
+      github: 'https://github.com/ktmcp-cli/faretrotter',
+      category: 'Travel',
+      features: [
+        'Multi-city flight search',
+        'Fare comparison',
+        'Travel itinerary planning',
+        'Budget travel options',
+        'Route optimization',
+        'Price alerts'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API credentials
+faretrotter auth login --api-key YOUR_API_KEY
+
+# Verify connection
+faretrotter auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# Search flights
+faretrotter flights search --from NYC --to LON
+
+# Get fare details
+faretrotter fares get FARE_ID`
+        }
+      ]
+    },
+    {
+      name: 'Files.com',
+      slug: 'filescom-cli',
+      package: '@ktmcp-cli/filescom',
+      description: 'Secure file transfer and storage API',
+      longDescription: 'Files.com is a secure cloud file management platform with SFTP, FTP, and API access. This CLI lets you manage files and folders, set permissions, manage users, and automate file transfer workflows from the terminal.',
+      github: 'https://github.com/ktmcp-cli/filescom',
+      category: 'Other',
+      features: [
+        'Upload and download files',
+        'Folder management',
+        'User and permission management',
+        'Automated file workflows',
+        'Audit log access',
+        'SFTP/FTP integration'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+filescom auth login --api-key YOUR_API_KEY
+
+# Verify connection
+filescom auth status`
+        },
+        {
+          title: 'Manage files',
+          code: `# List files in a folder
+filescom files list /reports
+
+# Upload a file
+filescom files upload ./report.pdf /reports/
+
+# Download a file
+filescom files download /reports/report.pdf ./local/`
+        }
+      ]
+    },
+    {
+      name: 'Fire Financial',
+      slug: 'firecom-cli',
+      package: '@ktmcp-cli/firecom',
+      description: 'Business banking accounts and payments',
+      longDescription: 'Fire Financial Services provides business banking APIs for Irish and UK businesses. This CLI gives access to accounts, payments, payees, and transaction data for automating your business banking workflows.',
+      github: 'https://github.com/ktmcp-cli/firecom',
+      category: 'Finance',
+      features: [
+        'View account balances',
+        'Initiate payments',
+        'Manage payees',
+        'Transaction history',
+        'Statement generation',
+        'Multi-currency accounts'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API credentials
+firecom auth login --client-id YOUR_ID --client-key YOUR_KEY
+
+# Verify connection
+firecom auth status`
+        },
+        {
+          title: 'Manage accounts',
+          code: `# List all accounts
+firecom accounts list
+
+# Get account transactions
+firecom transactions list --account-id ACCOUNT_ID
+
+# Initiate a payment
+firecom payments create \\
+  --account-id ACCOUNT_ID \\
+  --amount 100.00 --currency EUR`
+        }
+      ]
+    },
+    {
+      name: 'FraudLabs',
+      slug: 'fraudlabs-cli',
+      package: '@ktmcp-cli/fraudlabs',
+      description: 'Fraud detection and prevention API',
+      longDescription: 'FraudLabs Pro is a fraud prevention service that validates orders to detect fraudulent transactions. This CLI lets you validate orders, manage blacklists, query fraud scores, and review transaction history from the terminal.',
+      github: 'https://github.com/ktmcp-cli/fraudlabs',
+      category: 'Finance',
+      features: [
+        'Order fraud validation',
+        'IP geolocation analysis',
+        'Email and phone verification',
+        'Blacklist management',
+        'Fraud score calculation',
+        'Transaction review workflow'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+fraudlabs auth login --api-key YOUR_API_KEY
+
+# Verify connection
+fraudlabs auth status`
+        },
+        {
+          title: 'Validate an order',
+          code: `# Validate an order for fraud
+fraudlabs orders validate \\
+  --ip 1.2.3.4 \\
+  --email user@example.com \\
+  --amount 299.99 \\
+  --currency USD
+
+# Review transaction result
+fraudlabs orders get TRANSACTION_ID`
+        }
+      ]
+    },
+    {
+      name: 'GOV.UK Pay',
+      slug: 'govukpay-cli',
+      package: '@ktmcp-cli/govukpay',
+      description: 'UK Government payments platform',
+      longDescription: 'GOV.UK Pay is the UK Government\'s payment platform for public services. This CLI lets you create payment requests, check payment status, issue refunds, and manage payment links for government service transactions.',
+      github: 'https://github.com/ktmcp-cli/govukpay',
+      category: 'Finance',
+      features: [
+        'Create payment requests',
+        'Check payment status',
+        'Issue refunds',
+        'Manage payment links',
+        'View transaction reports',
+        'Webhook event handling'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+govukpay auth login --api-key YOUR_API_KEY
+
+# Verify connection
+govukpay auth status`
+        },
+        {
+          title: 'Manage payments',
+          code: `# Create a new payment
+govukpay payments create \\
+  --amount 5000 \\
+  --reference "council-tax-123" \\
+  --description "Council Tax Payment"
+
+# Get payment status
+govukpay payments get PAYMENT_ID`
+        }
+      ]
+    },
+    {
+      name: 'HERE Tracking',
+      slug: 'heretracking-cli',
+      package: '@ktmcp-cli/heretracking',
+      description: 'IoT asset tracking and geofencing',
+      longDescription: 'HERE Tracking is an IoT asset tracking platform for managing connected devices at scale. This CLI lets you manage devices, retrieve location history, set up geofences, and monitor tracking events from the terminal.',
+      github: 'https://github.com/ktmcp-cli/heretracking',
+      category: 'IoT/Tech',
+      features: [
+        'Device registration and management',
+        'Real-time location tracking',
+        'Geofence configuration',
+        'Location history queries',
+        'Event notifications',
+        'Fleet management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+heretracking auth login --access-key YOUR_KEY --access-key-id YOUR_ID
+
+# Verify connection
+heretracking auth status`
+        },
+        {
+          title: 'Track devices',
+          code: `# List all devices
+heretracking devices list
+
+# Get device location
+heretracking devices location DEVICE_ID
+
+# View location history
+heretracking devices history DEVICE_ID \\
+  --from 2026-01-01 --to 2026-01-31`
+        }
+      ]
+    },
+    {
+      name: 'Hetras',
+      slug: 'hetras-cli',
+      package: '@ktmcp-cli/hetras',
+      description: 'Hotel booking and property management',
+      longDescription: 'Hetras provides a hotel property management system API for managing reservations, rooms, and guest profiles. This CLI lets hospitality businesses automate booking workflows, check availability, and manage hotel operations.',
+      github: 'https://github.com/ktmcp-cli/hetras',
+      category: 'Travel',
+      features: [
+        'Reservation management',
+        'Room availability checking',
+        'Guest profile management',
+        'Rate plan configuration',
+        'Check-in and check-out',
+        'Housekeeping status'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API credentials
+hetras auth login --app-id YOUR_APP_ID --app-key YOUR_APP_KEY
+
+# Verify connection
+hetras auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List reservations
+hetras reservations list --hotel-id HOTEL_ID
+
+# Check room availability
+hetras rooms availability \\
+  --hotel-id HOTEL_ID \\
+  --from 2026-03-01 --to 2026-03-07`
+        }
+      ]
+    },
+    {
+      name: 'HubSpot',
+      slug: 'hubspot-cli',
+      package: '@ktmcp-cli/hubspot',
+      description: 'CRM contacts, deals, and pipelines',
+      longDescription: 'HubSpot is a leading CRM and marketing platform. This CLI provides access to contacts, companies, deals, tickets, and marketing data so you can automate your sales and marketing workflows from the terminal.',
+      github: 'https://github.com/ktmcp-cli/hubspot',
+      category: 'Productivity',
+      features: [
+        'Contact and company management',
+        'Deal pipeline management',
+        'Ticket and support tracking',
+        'Email marketing campaigns',
+        'Form and landing page data',
+        'Analytics and reporting'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API token
+hubspot auth login --access-token YOUR_TOKEN
+
+# Verify connection
+hubspot auth status`
+        },
+        {
+          title: 'Manage contacts',
+          code: `# List all contacts
+hubspot contacts list --limit 10
+
+# Create a new contact
+hubspot contacts create \\
+  --email user@example.com \\
+  --firstname "John" \\
+  --lastname "Smith"
+
+# Get contact details
+hubspot contacts get CONTACT_ID`
+        }
+      ]
+    },
+    {
+      name: 'Impala Hotels',
+      slug: 'impalahotels-cli',
+      package: '@ktmcp-cli/impalahotels',
+      description: 'Hotel booking and inventory API',
+      longDescription: 'Impala provides a hotel distribution API that connects to hundreds of hotels worldwide. This CLI lets you search hotel availability, view rates, make reservations, and manage bookings directly from the terminal.',
+      github: 'https://github.com/ktmcp-cli/impalahotels',
+      category: 'Travel',
+      features: [
+        'Hotel availability search',
+        'Real-time rate access',
+        'Reservation creation',
+        'Booking management',
+        'Room type details',
+        'Cancellation handling'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+impalahotels auth login --api-key YOUR_API_KEY
+
+# Verify connection
+impalahotels auth status`
+        },
+        {
+          title: 'Search hotels',
+          code: `# Search hotel availability
+impalahotels hotels search \\
+  --location "London" \\
+  --checkin 2026-03-01 \\
+  --checkout 2026-03-07 \\
+  --adults 2
+
+# Get hotel details
+impalahotels hotels get HOTEL_ID`
+        }
+      ]
+    },
+    {
+      name: 'IoTVAS',
+      slug: 'iotvas-cli',
+      package: '@ktmcp-cli/iotvas',
+      description: 'IoT device vulnerability scanning',
+      longDescription: 'IoTVAS is an IoT device vulnerability assessment service that identifies security risks in connected devices. This CLI lets you scan devices, retrieve firmware analysis, check CVE databases, and monitor device security posture.',
+      github: 'https://github.com/ktmcp-cli/iotvas',
+      category: 'IoT/Tech',
+      features: [
+        'Device vulnerability scanning',
+        'Firmware security analysis',
+        'CVE database queries',
+        'Risk score calculation',
+        'Security report generation',
+        'Device inventory management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+iotvas auth login --api-key YOUR_API_KEY
+
+# Verify connection
+iotvas auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# Scan a device
+iotvas devices scan --mac 00:11:22:33:44:55
+
+# Get vulnerability report
+iotvas devices report DEVICE_ID`
+        }
+      ]
+    },
+    {
+      name: 'Mastercard OB',
+      slug: 'mastercardob-cli',
+      package: '@ktmcp-cli/mastercardob',
+      description: 'Open banking payment initiation',
+      longDescription: 'Mastercard Open Banking provides Payment Initiation Services (PIS) that enable bank transfers directly from consumer accounts. This CLI lets you initiate payments, check payment status, and manage open banking consents.',
+      github: 'https://github.com/ktmcp-cli/mastercardob',
+      category: 'Finance',
+      features: [
+        'Payment initiation services',
+        'Account information access',
+        'Consent management',
+        'Bank account verification',
+        'Payment status tracking',
+        'Open banking compliance'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+mastercardob auth login --consumer-key YOUR_KEY --key-file ./cert.p12
+
+# Verify connection
+mastercardob auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List payment requests
+mastercardob payments list
+
+# Get payment status
+mastercardob payments get PAYMENT_ID`
+        }
+      ]
+    },
+    {
+      name: 'Ntropy',
+      slug: 'ntropy-cli',
+      package: '@ktmcp-cli/ntropy',
+      description: 'Financial transaction enrichment API',
+      longDescription: 'Ntropy provides AI-powered financial transaction enrichment that normalizes and categorizes bank transactions. This CLI lets you enrich transactions with merchant data, spend categories, and structured labels at scale.',
+      github: 'https://github.com/ktmcp-cli/ntropy',
+      category: 'Finance',
+      features: [
+        'Transaction enrichment',
+        'Merchant identification',
+        'Spend categorization',
+        'Batch processing',
+        'Custom category training',
+        'Recurring transaction detection'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+ntropy auth login --api-key YOUR_API_KEY
+
+# Verify connection
+ntropy auth status`
+        },
+        {
+          title: 'Enrich transactions',
+          code: `# Enrich a single transaction
+ntropy transactions enrich \\
+  --description "STARBUCKS #1234" \\
+  --amount -4.50 \\
+  --date 2026-01-15
+
+# Batch enrich from file
+ntropy transactions batch-enrich --file ./transactions.json`
+        }
+      ]
+    },
+    {
+      name: 'Plaid',
+      slug: 'plaid-cli',
+      package: '@ktmcp-cli/plaid',
+      description: 'Banking and financial data access',
+      longDescription: 'Plaid is the leading financial data network connecting apps to bank accounts. This CLI provides access to account balances, transaction history, identity verification, income data, and investment holdings via the Plaid API.',
+      github: 'https://github.com/ktmcp-cli/plaid',
+      category: 'Finance',
+      features: [
+        'Bank account connectivity',
+        'Transaction history access',
+        'Account balance retrieval',
+        'Identity verification',
+        'Income verification',
+        'Investment data access'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API credentials
+plaid auth login \\
+  --client-id YOUR_CLIENT_ID \\
+  --secret YOUR_SECRET \\
+  --env sandbox
+
+# Verify connection
+plaid auth status`
+        },
+        {
+          title: 'Access account data',
+          code: `# List linked accounts
+plaid accounts list --access-token ACCESS_TOKEN
+
+# Get transactions
+plaid transactions get \\
+  --access-token ACCESS_TOKEN \\
+  --start-date 2026-01-01 \\
+  --end-date 2026-01-31`
+        }
+      ]
+    },
+    {
+      name: 'PocketSmith',
+      slug: 'pocketsmith-cli',
+      package: '@ktmcp-cli/pocketsmith',
+      description: 'Personal finance forecasting API',
+      longDescription: 'PocketSmith is a personal finance forecasting tool that projects your cash flow into the future. This CLI lets you manage accounts, view transactions, set budgets, and access cash flow projections from the terminal.',
+      github: 'https://github.com/ktmcp-cli/pocketsmith',
+      category: 'Finance',
+      features: [
+        'Cash flow forecasting',
+        'Account and budget management',
+        'Transaction categorization',
+        'Net worth tracking',
+        'Scenario planning',
+        'Financial goal setting'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+pocketsmith auth login --api-key YOUR_API_KEY
+
+# Verify connection
+pocketsmith auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List accounts
+pocketsmith accounts list
+
+# Get transactions
+pocketsmith transactions list --account-id ACCOUNT_ID
+
+# View cash flow forecast
+pocketsmith forecast get --period 3months`
+        }
+      ]
+    },
+    {
+      name: 'QuickBooks',
+      slug: 'quickbooks-cli',
+      package: '@ktmcp-cli/quickbooks',
+      description: 'Accounting, invoices, and customers',
+      longDescription: 'QuickBooks Online is the most widely used cloud accounting software for small businesses. This CLI provides access to invoices, customers, expenses, accounts, and reports so you can automate your accounting workflows.',
+      github: 'https://github.com/ktmcp-cli/quickbooks',
+      category: 'Finance',
+      features: [
+        'Invoice creation and management',
+        'Customer and vendor management',
+        'Expense tracking',
+        'Financial report generation',
+        'Bank account reconciliation',
+        'Tax calculation support'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up OAuth credentials
+quickbooks auth login --client-id YOUR_ID --client-secret YOUR_SECRET
+
+# Verify connection
+quickbooks auth status`
+        },
+        {
+          title: 'Manage invoices',
+          code: `# List all invoices
+quickbooks invoices list
+
+# Create an invoice
+quickbooks invoices create \\
+  --customer-id CUSTOMER_ID \\
+  --line-amount 500.00 \\
+  --description "Consulting services"
+
+# Get invoice details
+quickbooks invoices get INVOICE_ID`
+        }
+      ]
+    },
+    {
+      name: 'SendGrid',
+      slug: 'sendgrid-cli',
+      package: '@ktmcp-cli/sendgrid',
+      description: 'Send emails and manage contacts',
+      longDescription: 'SendGrid is the leading cloud email delivery platform. This CLI provides access to transactional email sending, marketing campaigns, contact management, and email analytics via the SendGrid API.',
+      github: 'https://github.com/ktmcp-cli/sendgrid',
+      category: 'Messaging',
+      features: [
+        'Send transactional emails',
+        'Marketing email campaigns',
+        'Contact list management',
+        'Email template management',
+        'Delivery analytics',
+        'Suppression list management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+sendgrid auth login --api-key YOUR_API_KEY
+
+# Verify connection
+sendgrid auth status`
+        },
+        {
+          title: 'Send emails',
+          code: `# Send a transactional email
+sendgrid email send \\
+  --to user@example.com \\
+  --from sender@domain.com \\
+  --subject "Hello!" \\
+  --text "Email body here"
+
+# Send with template
+sendgrid email send \\
+  --to user@example.com \\
+  --template-id YOUR_TEMPLATE_ID`
+        }
+      ]
+    },
+    {
+      name: 'ShipEngine',
+      slug: 'shipengine-cli',
+      package: '@ktmcp-cli/shipengine',
+      description: 'Shipping rates, labels, and tracking',
+      longDescription: 'ShipEngine is a multi-carrier shipping API that simplifies label creation, rate comparison, and package tracking. This CLI lets you compare rates, create labels, validate addresses, and track shipments from the terminal.',
+      github: 'https://github.com/ktmcp-cli/shipengine',
+      category: 'Other',
+      features: [
+        'Multi-carrier rate comparison',
+        'Shipping label creation',
+        'Address validation',
+        'Package tracking',
+        'Batch label printing',
+        'Return label management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+shipengine auth login --api-key YOUR_API_KEY
+
+# Verify connection
+shipengine auth status`
+        },
+        {
+          title: 'Get shipping rates',
+          code: `# Compare shipping rates
+shipengine rates get \\
+  --from-zip 10001 \\
+  --to-zip 90210 \\
+  --weight 2 --weight-unit pound
+
+# Create a label
+shipengine labels create \\
+  --rate-id RATE_ID`
+        }
+      ]
+    },
+    {
+      name: 'Shotstack',
+      slug: 'shotstack-cli',
+      package: '@ktmcp-cli/shotstack',
+      description: 'Video editing and rendering API',
+      longDescription: 'Shotstack is a cloud video editing API for generating videos programmatically. This CLI lets you render video templates, manage assets, queue renders, and retrieve output files for automated video production workflows.',
+      github: 'https://github.com/ktmcp-cli/shotstack',
+      category: 'Media',
+      features: [
+        'Programmatic video rendering',
+        'Template-based video creation',
+        'Asset management',
+        'Multi-format output support',
+        'Render queue management',
+        'Webhook notifications'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+shotstack auth login --api-key YOUR_API_KEY --env sandbox
+
+# Verify connection
+shotstack auth status`
+        },
+        {
+          title: 'Render a video',
+          code: `# Submit a render job
+shotstack renders create --template ./video-template.json
+
+# Check render status
+shotstack renders get RENDER_ID
+
+# List recent renders
+shotstack renders list --limit 10`
+        }
+      ]
+    },
+    {
+      name: 'Smart-me',
+      slug: 'smartme-cli',
+      package: '@ktmcp-cli/smartme',
+      description: 'Energy monitoring and smart meters',
+      longDescription: 'Smart-me is an energy management platform connecting smart meters and IoT devices. This CLI provides access to energy consumption data, device readings, tariff settings, and real-time monitoring for building and industrial use cases.',
+      github: 'https://github.com/ktmcp-cli/smartme',
+      category: 'IoT/Tech',
+      features: [
+        'Real-time energy readings',
+        'Device management',
+        'Historical consumption data',
+        'Tariff configuration',
+        'Multi-meter support',
+        'Energy analytics'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+smartme auth login --username YOUR_USER --password YOUR_PASS
+
+# Verify connection
+smartme auth status`
+        },
+        {
+          title: 'Monitor energy',
+          code: `# List all devices
+smartme devices list
+
+# Get current readings
+smartme devices readings DEVICE_ID
+
+# Get consumption history
+smartme devices history DEVICE_ID \\
+  --from 2026-01-01 --to 2026-01-31`
+        }
+      ]
+    },
+    {
+      name: 'SpectroCoin',
+      slug: 'spectrocoin-cli',
+      package: '@ktmcp-cli/spectrocoin',
+      description: 'Crypto merchant payments API',
+      longDescription: 'SpectroCoin is a cryptocurrency exchange and merchant payment platform. This CLI lets you create payment orders, check payment status, manage wallets, and receive cryptocurrencies as payment for your business.',
+      github: 'https://github.com/ktmcp-cli/spectrocoin',
+      category: 'Finance',
+      features: [
+        'Create payment orders',
+        'Accept crypto payments',
+        'Payment status tracking',
+        'Wallet management',
+        'Exchange rate access',
+        'Merchant callback handling'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up merchant credentials
+spectrocoin auth login --merchant-id YOUR_ID --project-id YOUR_PROJECT
+
+# Verify connection
+spectrocoin auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# Create a payment order
+spectrocoin orders create \\
+  --pay-amount 0.001 \\
+  --pay-currency BTC \\
+  --receive-amount 50 \\
+  --receive-currency EUR`
+        }
+      ]
+    },
+    {
+      name: 'Stripe',
+      slug: 'stripe-cli',
+      package: '@ktmcp-cli/stripe',
+      description: 'Payments, customers, subscriptions',
+      longDescription: 'Stripe is the world\'s leading payment infrastructure platform. This CLI provides full access to payments, customers, subscriptions, invoices, and webhooks so you can automate your entire payment stack from the terminal.',
+      github: 'https://github.com/ktmcp-cli/stripe',
+      category: 'Finance',
+      features: [
+        'Payment processing',
+        'Subscription management',
+        'Customer management',
+        'Invoice creation',
+        'Refund handling',
+        'Webhook event management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+stripe auth login --api-key YOUR_SECRET_KEY
+
+# Verify connection
+stripe auth status`
+        },
+        {
+          title: 'Manage customers',
+          code: `# List customers
+stripe customers list --limit 10
+
+# Create a customer
+stripe customers create \\
+  --email user@example.com \\
+  --name "John Smith"
+
+# Get customer details
+stripe customers get CUSTOMER_ID`
+        }
+      ]
+    },
+    {
+      name: 'Taxamo',
+      slug: 'taxamo-cli',
+      package: '@ktmcp-cli/taxamo',
+      description: 'Global tax compliance and calculation',
+      longDescription: 'Taxamo is a global tax compliance platform for digital businesses. This CLI provides access to tax calculation, transaction recording, VAT OSS reporting, and compliance data for selling digital goods internationally.',
+      github: 'https://github.com/ktmcp-cli/taxamo',
+      category: 'Finance',
+      features: [
+        'Tax calculation engine',
+        'Transaction recording',
+        'VAT OSS reporting',
+        'Multi-country compliance',
+        'Tax evidence collection',
+        'Settlement reporting'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+taxamo auth login --private-token YOUR_TOKEN
+
+# Verify connection
+taxamo auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# Calculate tax for a transaction
+taxamo tax calculate \\
+  --buyer-ip 1.2.3.4 \\
+  --amount 100 \\
+  --currency EUR
+
+# List recorded transactions
+taxamo transactions list`
+        }
+      ]
+    },
+    {
+      name: 'TaxJar',
+      slug: 'taxjar-cli',
+      package: '@ktmcp-cli/taxjar',
+      description: 'Sales tax calculation and reporting',
+      longDescription: 'TaxJar is a sales tax automation service for ecommerce businesses in the US. This CLI lets you calculate sales tax, create and manage transactions, generate tax reports, and look up tax rates for any US address.',
+      github: 'https://github.com/ktmcp-cli/taxjar',
+      category: 'Finance',
+      features: [
+        'US sales tax calculation',
+        'Transaction management',
+        'Tax rate lookup',
+        'AutoFile reporting',
+        'Nexus management',
+        'Tax category mapping'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API token
+taxjar auth login --api-token YOUR_TOKEN
+
+# Verify connection
+taxjar auth status`
+        },
+        {
+          title: 'Calculate tax',
+          code: `# Calculate sales tax
+taxjar tax calculate \\
+  --to-zip 90210 \\
+  --to-state CA \\
+  --to-country US \\
+  --amount 100
+
+# Look up tax rates by zip
+taxjar rates get --zip 90210`
+        }
+      ]
+    },
+    {
+      name: 'Telnyx',
+      slug: 'telnyx-cli',
+      package: '@ktmcp-cli/telnyx',
+      description: 'SMS, calls, and phone numbers API',
+      longDescription: 'Telnyx is a carrier-grade communications platform offering SMS, voice, fax, and SIP trunking at competitive rates. This CLI provides programmatic access to messaging, calling, phone number management, and analytics.',
+      github: 'https://github.com/ktmcp-cli/telnyx',
+      category: 'Messaging',
+      features: [
+        'Send and receive SMS',
+        'Voice call management',
+        'Phone number provisioning',
+        'Messaging profile configuration',
+        'Call control and routing',
+        'Analytics and reporting'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+telnyx auth login --api-key YOUR_API_KEY
+
+# Verify connection
+telnyx auth status`
+        },
+        {
+          title: 'Send messages',
+          code: `# Send an SMS
+telnyx messages send \\
+  --from +15550001234 \\
+  --to +15559876543 \\
+  --text "Hello from Telnyx!"
+
+# List sent messages
+telnyx messages list --limit 10`
+        }
+      ]
+    },
+    {
+      name: 'Tisane',
+      slug: 'tisane-cli',
+      package: '@ktmcp-cli/tisane',
+      description: 'NLP and content moderation API',
+      longDescription: 'Tisane is a natural language processing and content moderation API that detects hate speech, abuse, and sensitive content. This CLI lets you analyze text for topics, sentiment, entities, and policy violations from the terminal.',
+      github: 'https://github.com/ktmcp-cli/tisane',
+      category: 'Other',
+      features: [
+        'Content moderation',
+        'Hate speech detection',
+        'Sentiment analysis',
+        'Entity extraction',
+        'Topic detection',
+        'Multi-language support'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+tisane auth login --api-key YOUR_API_KEY
+
+# Verify connection
+tisane auth status`
+        },
+        {
+          title: 'Analyze text',
+          code: `# Analyze text for moderation
+tisane analyze \\
+  --text "Text to analyze" \\
+  --language en
+
+# Parse for entities
+tisane parse \\
+  --text "John Smith visited Paris last Tuesday" \\
+  --language en`
+        }
+      ]
+    },
+    {
+      name: 'Twilio',
+      slug: 'twilio-cli',
+      package: '@ktmcp-cli/twilio',
+      description: 'SMS, calls, and phone numbers',
+      longDescription: 'Twilio is the world\'s leading cloud communications platform. This CLI provides access to SMS messaging, voice calls, phone number management, and the full Twilio REST API for automating communications from the terminal.',
+      github: 'https://github.com/ktmcp-cli/twilio',
+      category: 'Messaging',
+      features: [
+        'Send and receive SMS',
+        'Make and receive calls',
+        'Phone number management',
+        'Message status tracking',
+        'Call recording access',
+        'Messaging service management'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+twilio auth login --account-sid YOUR_SID --auth-token YOUR_TOKEN
+
+# Verify connection
+twilio auth status`
+        },
+        {
+          title: 'Send messages',
+          code: `# Send an SMS
+twilio messages send \\
+  --to +15550001234 \\
+  --from +15559998765 \\
+  --body "Hello World!"
+
+# List sent messages
+twilio messages list --limit 10`
+        }
+      ]
+    },
+    {
+      name: 'Up Bank',
+      slug: 'upbank-cli',
+      package: '@ktmcp-cli/upbank',
+      description: 'Australian neobank API',
+      longDescription: 'Up Bank is an Australian neobank with a clean developer API. This CLI provides access to accounts, transactions, categories, and spending insights for automating your personal finance tracking from the terminal.',
+      github: 'https://github.com/ktmcp-cli/upbank',
+      category: 'Finance',
+      features: [
+        'Account balance access',
+        'Transaction history',
+        'Spending categorization',
+        'Savers jar management',
+        'Webhook configuration',
+        'Transaction tagging'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up personal access token
+upbank auth login --token YOUR_PERSONAL_TOKEN
+
+# Verify connection
+upbank auth status`
+        },
+        {
+          title: 'View accounts',
+          code: `# List all accounts
+upbank accounts list
+
+# Get account details
+upbank accounts get ACCOUNT_ID
+
+# View transactions
+upbank transactions list \\
+  --account-id ACCOUNT_ID \\
+  --limit 20`
+        }
+      ]
+    },
+    {
+      name: 'VAT API',
+      slug: 'vatapi-cli',
+      package: '@ktmcp-cli/vatapi',
+      description: 'European VAT validation and rates',
+      longDescription: 'VAT API provides European VAT number validation, rate lookup, and invoice generation services. This CLI lets you validate VAT numbers, retrieve VAT rates by country, convert currencies, and generate VAT-compliant invoices.',
+      github: 'https://github.com/ktmcp-cli/vatapi',
+      category: 'Finance',
+      features: [
+        'VAT number validation',
+        'EU VAT rate lookup',
+        'Invoice generation',
+        'Currency conversion',
+        'IP geolocation for VAT',
+        'Batch VAT validation'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+vatapi auth login --api-key YOUR_API_KEY
+
+# Verify connection
+vatapi auth status`
+        },
+        {
+          title: 'Validate VAT',
+          code: `# Validate a VAT number
+vatapi validate --vat-number GB123456789
+
+# Get VAT rates for a country
+vatapi rates get --country-code GB
+
+# Convert currency with VAT
+vatapi convert --amount 100 --currency-from GBP --currency-to EUR`
+        }
+      ]
+    },
+    {
+      name: 'Velo Payments',
+      slug: 'velopay-cli',
+      package: '@ktmcp-cli/velopay',
+      description: 'Mass payout and disbursement API',
+      longDescription: 'Velo Payments provides a mass payout platform for businesses that need to send large volumes of payments globally. This CLI lets you manage payees, submit payment batches, track payout status, and manage funding accounts.',
+      github: 'https://github.com/ktmcp-cli/velopay',
+      category: 'Finance',
+      features: [
+        'Mass payout submission',
+        'Payee management',
+        'Payment batch processing',
+        'Funding source management',
+        'Payment status tracking',
+        'Compliance and reporting'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+velopay auth login --client-id YOUR_ID --client-secret YOUR_SECRET
+
+# Verify connection
+velopay auth status`
+        },
+        {
+          title: 'List resources',
+          code: `# List payees
+velopay payees list
+
+# Submit a payout batch
+velopay payouts submit --file ./payouts.csv
+
+# Check payout status
+velopay payouts get PAYOUT_ID`
+        }
+      ]
+    },
+    {
+      name: 'Viator',
+      slug: 'viator-cli',
+      package: '@ktmcp-cli/viator',
+      description: 'Tours and activities booking API',
+      longDescription: 'Viator is the world\'s largest marketplace for tours, activities, and experiences. This CLI provides access to product search, availability, booking creation, and booking management for travel experience providers and resellers.',
+      github: 'https://github.com/ktmcp-cli/viator',
+      category: 'Travel',
+      features: [
+        'Tour and activity search',
+        'Real-time availability',
+        'Booking creation',
+        'Booking management',
+        'Review and rating access',
+        'Destination data'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API key
+viator auth login --api-key YOUR_API_KEY
+
+# Verify connection
+viator auth status`
+        },
+        {
+          title: 'Search experiences',
+          code: `# Search for tours
+viator experiences search \\
+  --destination "Paris" \\
+  --start-date 2026-03-01
+
+# Get experience details
+viator experiences get PRODUCT_CODE
+
+# Check availability
+viator availability get \\
+  --product-code PRODUCT_CODE \\
+  --date 2026-03-15`
+        }
+      ]
+    },
+    {
+      name: 'Vonage SMS',
+      slug: 'vonagesms-cli',
+      package: '@ktmcp-cli/vonagesms',
+      description: 'Send SMS and manage phone numbers',
+      longDescription: 'Vonage (formerly Nexmo) SMS API enables businesses to send and receive SMS messages worldwide. This CLI provides access to message sending, inbox management, number provisioning, and delivery receipt handling.',
+      github: 'https://github.com/ktmcp-cli/vonagesms',
+      category: 'Messaging',
+      features: [
+        'Send SMS messages',
+        'Receive inbound SMS',
+        'Phone number management',
+        'Delivery receipt tracking',
+        'Short code support',
+        'Number masking'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up API credentials
+vonagesms auth login --api-key YOUR_KEY --api-secret YOUR_SECRET
+
+# Verify connection
+vonagesms auth status`
+        },
+        {
+          title: 'Send messages',
+          code: `# Send an SMS
+vonagesms message send \\
+  --to 15550001234 \\
+  --from 15559998765 \\
+  --text "Hello from Vonage!"
+
+# Check message status
+vonagesms message get MESSAGE_ID`
+        }
+      ]
+    },
+    {
+      name: 'Vonage Voice',
+      slug: 'vonagevoice-cli',
+      package: '@ktmcp-cli/vonagevoice',
+      description: 'Voice calls and PSTN API',
+      longDescription: 'Vonage Voice API enables programmatic voice call management including outbound calls, IVR, call recording, and text-to-speech. This CLI lets you create calls, manage active calls, retrieve recordings, and configure voice applications.',
+      github: 'https://github.com/ktmcp-cli/vonagevoice',
+      category: 'Messaging',
+      features: [
+        'Outbound voice calls',
+        'Call recording',
+        'Text-to-speech support',
+        'IVR configuration',
+        'Call control and management',
+        'Transcription access'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+vonagevoice auth login --api-key YOUR_KEY --api-secret YOUR_SECRET
+
+# Verify connection
+vonagevoice auth status`
+        },
+        {
+          title: 'Manage calls',
+          code: `# Create an outbound call
+vonagevoice calls create \\
+  --to 15550001234 \\
+  --from 15559998765 \\
+  --answer-url https://example.com/ncco.json
+
+# List active calls
+vonagevoice calls list`
+        }
+      ]
+    },
+    {
+      name: 'Xero',
+      slug: 'xero-cli',
+      package: '@ktmcp-cli/xero',
+      description: 'Cloud accounting and invoices API',
+      longDescription: 'Xero is a leading cloud accounting platform for small and medium businesses. This CLI provides full access to invoices, contacts, bank transactions, reports, and payroll so you can automate your accounting workflows from the terminal.',
+      github: 'https://github.com/ktmcp-cli/xero',
+      category: 'Finance',
+      features: [
+        'Invoice creation and management',
+        'Contact management',
+        'Bank transaction reconciliation',
+        'Financial report generation',
+        'Expense claim management',
+        'Payroll access'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up OAuth credentials
+xero auth login --client-id YOUR_ID --client-secret YOUR_SECRET
+
+# Verify connection
+xero auth status`
+        },
+        {
+          title: 'Manage invoices',
+          code: `# List all invoices
+xero invoices list --status AUTHORISED
+
+# Create an invoice
+xero invoices create \\
+  --contact-id CONTACT_ID \\
+  --line-amount 500.00 \\
+  --line-description "Consulting"
+
+# Get invoice details
+xero invoices get INVOICE_ID`
+        }
+      ]
+    },
+    {
+      name: 'Yodlee',
+      slug: 'yodlee-cli',
+      package: '@ktmcp-cli/yodlee',
+      description: 'Financial data aggregation API',
+      longDescription: 'Yodlee provides financial data aggregation services connecting to thousands of financial institutions. This CLI offers access to accounts, transactions, investment holdings, and net worth data for building personal finance applications.',
+      github: 'https://github.com/ktmcp-cli/yodlee',
+      category: 'Finance',
+      features: [
+        'Multi-institution account aggregation',
+        'Transaction history access',
+        'Investment portfolio data',
+        'Net worth calculation',
+        'Categorized spending data',
+        'Income and expense analysis'
+      ],
+      examples: [
+        {
+          title: 'Authentication',
+          code: `# Set up credentials
+yodlee auth login --client-id YOUR_ID --secret YOUR_SECRET
+
+# Verify connection
+yodlee auth status`
+        },
+        {
+          title: 'Access financial data',
+          code: `# List all accounts
+yodlee accounts list
+
+# Get transactions
+yodlee transactions list \\
+  --account-id ACCOUNT_ID \\
+  --from-date 2026-01-01 \\
+  --to-date 2026-01-31
+
+# Get net worth
+yodlee derived net-worth`
+        }
+      ]
     }
   ];
 

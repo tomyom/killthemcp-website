@@ -81,6 +81,705 @@ Acme Corp (UK)
 ├─ Platform: Xero
 ├─ Status: Linked
 └─ Last sync: 2 hours ago`
+  },
+  {
+    name: 'Ably',
+    slug: 'ably-cli',
+    package: '@ktmcp-cli/ably',
+    description: 'Manage Ably apps, keys, and queues',
+    github: 'https://github.com/ktmcp-cli/ably',
+    category: 'Messaging',
+    terminalExample: `$ ably --help
+
+✓ ably CLI v1.0.0
+Usage: ably [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'Adyen',
+    slug: 'adyen-cli',
+    package: '@ktmcp-cli/adyen',
+    description: 'Adyen Checkout API integration',
+    github: 'https://github.com/ktmcp-cli/adyen',
+    category: 'Finance',
+    terminalExample: `$ adyen --help
+
+✓ adyen CLI v1.0.0
+Usage: adyen [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'AdyenPayout',
+    slug: 'adyenpayout-cli',
+    package: '@ktmcp-cli/adyenpayout',
+    description: 'Adyen Payout API for disbursements',
+    github: 'https://github.com/ktmcp-cli/adyenpayout',
+    category: 'Finance',
+    terminalExample: `$ adyenpayout --help
+
+✓ adyenpayout CLI v1.0.0
+Usage: adyenpayout [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'Amadeus',
+    slug: 'amadeus-cli',
+    package: '@ktmcp-cli/amadeus',
+    description: 'Flights, hotels, and travel search',
+    github: 'https://github.com/ktmcp-cli/amadeus',
+    category: 'Travel',
+    terminalExample: `$ amadeus flights search \\
+  --origin JFK --dest LHR
+
+✓ Found 12 flights
+BA 117  JFK→LHR  $542  08:30
+AA 101  JFK→LHR  $618  22:15`
+  },
+  {
+    name: 'Apideck',
+    slug: 'apideck-cli',
+    package: '@ktmcp-cli/apideck',
+    description: 'Unified CRM API across platforms',
+    github: 'https://github.com/ktmcp-cli/apideck',
+    category: 'Productivity',
+    terminalExample: `$ apideck --help
+
+✓ apideck CLI v1.0.0
+Usage: apideck [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'ApiVideo',
+    slug: 'apivideo-cli',
+    package: '@ktmcp-cli/apivideo',
+    description: 'Video hosting and transcoding API',
+    github: 'https://github.com/ktmcp-cli/apivideo',
+    category: 'Media',
+    terminalExample: `$ apivideo videos list
+
+✓ Found 8 videos
+intro.mp4     HD  2:34  public
+demo.mp4      4K  5:12  private`
+  },
+  {
+    name: 'Bunq',
+    slug: 'bunq-cli',
+    package: '@ktmcp-cli/bunq',
+    description: 'Neobank accounts, payments, and cards',
+    github: 'https://github.com/ktmcp-cli/bunq',
+    category: 'Finance',
+    terminalExample: `$ bunq accounts list
+
+✓ Connected accounts (2)
+
+Primary Account | €4,231.50
+Savings Jar     | €1,800.00`
+  },
+  {
+    name: 'CallFire',
+    slug: 'callfire-cli',
+    package: '@ktmcp-cli/callfire',
+    description: 'SMS and voice broadcasting API',
+    github: 'https://github.com/ktmcp-cli/callfire',
+    category: 'Messaging',
+    terminalExample: `$ callfire campaigns list
+
+✓ Found 3 campaigns
+Summer Sale SMS   sent   4,521
+Follow-up Voice   active 1,200`
+  },
+  {
+    name: 'Chaingateway',
+    slug: 'chaingateway-cli',
+    package: '@ktmcp-cli/chaingateway',
+    description: 'Blockchain payment gateway API',
+    github: 'https://github.com/ktmcp-cli/chaingateway',
+    category: 'Finance',
+    terminalExample: `$ chaingateway --help
+
+✓ chaingateway CLI v1.0.0
+Usage: chaingateway [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'ClickSend',
+    slug: 'clicksend-cli',
+    package: '@ktmcp-cli/clicksend',
+    description: 'SMS and multi-channel messaging API',
+    github: 'https://github.com/ktmcp-cli/clicksend',
+    category: 'Messaging',
+    terminalExample: `$ clicksend sms send \\
+  --to +1555000123 \\
+  --message "Hello!"
+
+✓ Message sent (ID: msg_abc123)`
+  },
+  {
+    name: 'ClickUp',
+    slug: 'clickup-cli',
+    package: '@ktmcp-cli/clickup',
+    description: 'Tasks, spaces, and project management',
+    github: 'https://github.com/ktmcp-cli/clickup',
+    category: 'Productivity',
+    terminalExample: `$ clickup tasks list --space "Engineering"
+
+✓ Found 14 tasks
+[TODO]  Design new dashboard
+[DONE]  Fix login bug
+[WIP]   Write API docs`
+  },
+  {
+    name: 'ClimateCom',
+    slug: 'climatecom-cli',
+    package: '@ktmcp-cli/climatecom',
+    description: 'Climate FieldView agricultural platform',
+    github: 'https://github.com/ktmcp-cli/climatecom',
+    category: 'Other',
+    terminalExample: `$ climatecom --help
+
+✓ climatecom CLI v1.0.0
+Usage: climatecom [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'Elmah.io',
+    slug: 'elmahio-cli',
+    package: '@ktmcp-cli/elmahio',
+    description: 'Error logging and monitoring API',
+    github: 'https://github.com/ktmcp-cli/elmahio',
+    category: 'Other',
+    terminalExample: `$ elmahio errors list --limit 5
+
+✓ Recent errors (5)
+NullRefException  5m ago  api/users
+TimeoutException  12m ago db/query
+404 NotFound      1h ago  /old-page`
+  },
+  {
+    name: 'ExchangeRate',
+    slug: 'exchangerate-cli',
+    package: '@ktmcp-cli/exchangerate',
+    description: 'Real-time currency exchange rates',
+    github: 'https://github.com/ktmcp-cli/exchangerate',
+    category: 'Finance',
+    terminalExample: `$ exchangerate convert \\
+  --from USD --to EUR --amount 100
+
+✓ 100 USD = 91.45 EUR
+Rate: 0.9145 (updated 2m ago)`
+  },
+  {
+    name: 'Faretrotter',
+    slug: 'faretrotter-cli',
+    package: '@ktmcp-cli/faretrotter',
+    description: 'Multi-city travel search and fares',
+    github: 'https://github.com/ktmcp-cli/faretrotter',
+    category: 'Travel',
+    terminalExample: `$ faretrotter --help
+
+✓ faretrotter CLI v1.0.0
+Usage: faretrotter [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'Files.com',
+    slug: 'filescom-cli',
+    package: '@ktmcp-cli/filescom',
+    description: 'Secure file transfer and storage API',
+    github: 'https://github.com/ktmcp-cli/filescom',
+    category: 'Other',
+    terminalExample: `$ filescom files list /reports
+
+✓ 6 files found
+Q4-report.pdf   2.1MB  2026-01-15
+Q3-report.pdf   1.8MB  2025-10-12`
+  },
+  {
+    name: 'Fire Financial',
+    slug: 'firecom-cli',
+    package: '@ktmcp-cli/firecom',
+    description: 'Business banking accounts and payments',
+    github: 'https://github.com/ktmcp-cli/firecom',
+    category: 'Finance',
+    terminalExample: `$ firecom accounts list
+
+✓ Business accounts (2)
+GBP Current  £14,320.00  active
+EUR Current  €8,750.00   active`
+  },
+  {
+    name: 'FraudLabs',
+    slug: 'fraudlabs-cli',
+    package: '@ktmcp-cli/fraudlabs',
+    description: 'Fraud detection and prevention API',
+    github: 'https://github.com/ktmcp-cli/fraudlabs',
+    category: 'Finance',
+    terminalExample: `$ fraudlabs order validate \\
+  --ip 1.2.3.4 --email user@test.com
+
+✓ Risk score: 12/100 (LOW)
+Status: APPROVE`
+  },
+  {
+    name: 'GOV.UK Pay',
+    slug: 'govukpay-cli',
+    package: '@ktmcp-cli/govukpay',
+    description: 'UK Government payments platform',
+    github: 'https://github.com/ktmcp-cli/govukpay',
+    category: 'Finance',
+    terminalExample: `$ govukpay payments list
+
+✓ Found 8 payments
+pay_abc123  £50.00  success  council-tax
+pay_def456  £25.00  created  parking-permit`
+  },
+  {
+    name: 'HERE Tracking',
+    slug: 'heretracking-cli',
+    package: '@ktmcp-cli/heretracking',
+    description: 'IoT asset tracking and geofencing',
+    github: 'https://github.com/ktmcp-cli/heretracking',
+    category: 'IoT/Tech',
+    terminalExample: `$ heretracking devices list
+
+✓ Tracking 5 devices
+truck-01  lat:51.5  lng:-0.1  online
+truck-02  lat:48.8  lng:2.35  offline`
+  },
+  {
+    name: 'Hetras',
+    slug: 'hetras-cli',
+    package: '@ktmcp-cli/hetras',
+    description: 'Hotel booking and property management',
+    github: 'https://github.com/ktmcp-cli/hetras',
+    category: 'Travel',
+    terminalExample: `$ hetras --help
+
+✓ hetras CLI v1.0.0
+Usage: hetras [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'HubSpot',
+    slug: 'hubspot-cli',
+    package: '@ktmcp-cli/hubspot',
+    description: 'CRM contacts, deals, and pipelines',
+    github: 'https://github.com/ktmcp-cli/hubspot',
+    category: 'Productivity',
+    terminalExample: `$ hubspot contacts list --limit 5
+
+✓ Found 1,240 contacts
+John Smith   Acme Corp    john@acme.com
+Jane Doe     Tech Ltd     jane@tech.com`
+  },
+  {
+    name: 'Impala Hotels',
+    slug: 'impalahotels-cli',
+    package: '@ktmcp-cli/impalahotels',
+    description: 'Hotel booking and inventory API',
+    github: 'https://github.com/ktmcp-cli/impalahotels',
+    category: 'Travel',
+    terminalExample: `$ impalahotels hotels search \\
+  --location London --checkin 2026-03-01
+
+✓ Found 24 hotels
+The Grand  ★★★★★  £220/night
+City Inn   ★★★    £89/night`
+  },
+  {
+    name: 'IoTVAS',
+    slug: 'iotvas-cli',
+    package: '@ktmcp-cli/iotvas',
+    description: 'IoT device vulnerability scanning',
+    github: 'https://github.com/ktmcp-cli/iotvas',
+    category: 'IoT/Tech',
+    terminalExample: `$ iotvas --help
+
+✓ iotvas CLI v1.0.0
+Usage: iotvas [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'Mastercard OB',
+    slug: 'mastercardob-cli',
+    package: '@ktmcp-cli/mastercardob',
+    description: 'Open banking payment initiation',
+    github: 'https://github.com/ktmcp-cli/mastercardob',
+    category: 'Finance',
+    terminalExample: `$ mastercardob --help
+
+✓ mastercardob CLI v1.0.0
+Usage: mastercardob [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'Ntropy',
+    slug: 'ntropy-cli',
+    package: '@ktmcp-cli/ntropy',
+    description: 'Financial transaction enrichment API',
+    github: 'https://github.com/ktmcp-cli/ntropy',
+    category: 'Finance',
+    terminalExample: `$ ntropy transactions enrich \\
+  --id txn_abc123
+
+✓ Enriched transaction
+Merchant: Starbucks
+Category: Food & Beverage`
+  },
+  {
+    name: 'Plaid',
+    slug: 'plaid-cli',
+    package: '@ktmcp-cli/plaid',
+    description: 'Banking and financial data access',
+    github: 'https://github.com/ktmcp-cli/plaid',
+    category: 'Finance',
+    terminalExample: `$ plaid accounts list
+
+✓ Linked accounts (3)
+Chase Checking   $5,420.00  depository
+Citi Savings     $12,100.00 depository
+Amex Gold        -$430.00   credit`
+  },
+  {
+    name: 'PocketSmith',
+    slug: 'pocketsmith-cli',
+    package: '@ktmcp-cli/pocketsmith',
+    description: 'Personal finance forecasting API',
+    github: 'https://github.com/ktmcp-cli/pocketsmith',
+    category: 'Finance',
+    terminalExample: `$ pocketsmith --help
+
+✓ pocketsmith CLI v1.0.0
+Usage: pocketsmith [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'QuickBooks',
+    slug: 'quickbooks-cli',
+    package: '@ktmcp-cli/quickbooks',
+    description: 'Accounting, invoices, and customers',
+    github: 'https://github.com/ktmcp-cli/quickbooks',
+    category: 'Finance',
+    terminalExample: `$ quickbooks invoices list
+
+✓ Found 34 invoices
+INV-001  Acme Corp   $1,250  paid
+INV-002  Tech Ltd    $890    overdue`
+  },
+  {
+    name: 'SendGrid',
+    slug: 'sendgrid-cli',
+    package: '@ktmcp-cli/sendgrid',
+    description: 'Send emails and manage contacts',
+    github: 'https://github.com/ktmcp-cli/sendgrid',
+    category: 'Messaging',
+    terminalExample: `$ sendgrid email send \\
+  --to user@example.com \\
+  --subject "Hello" \\
+  --template welcome_v1
+
+✓ Email queued (ID: msg_xyz789)`
+  },
+  {
+    name: 'ShipEngine',
+    slug: 'shipengine-cli',
+    package: '@ktmcp-cli/shipengine',
+    description: 'Shipping rates, labels, and tracking',
+    github: 'https://github.com/ktmcp-cli/shipengine',
+    category: 'Other',
+    terminalExample: `$ shipengine rates get \\
+  --from 10001 --to 90210 --weight 2lb
+
+✓ 4 rates found
+UPS Ground   $8.42   3-5 days
+USPS Flat    $9.50   2-3 days`
+  },
+  {
+    name: 'Shotstack',
+    slug: 'shotstack-cli',
+    package: '@ktmcp-cli/shotstack',
+    description: 'Video editing and rendering API',
+    github: 'https://github.com/ktmcp-cli/shotstack',
+    category: 'Media',
+    terminalExample: `$ shotstack render create \\
+  --template intro --format mp4
+
+✓ Render queued
+ID: render_abc123
+ETA: ~45 seconds`
+  },
+  {
+    name: 'Smart-me',
+    slug: 'smartme-cli',
+    package: '@ktmcp-cli/smartme',
+    description: 'Energy monitoring and smart meters',
+    github: 'https://github.com/ktmcp-cli/smartme',
+    category: 'IoT/Tech',
+    terminalExample: `$ smartme devices list
+
+✓ 3 smart meters online
+Office Meter   42.3 kWh today
+Server Room    18.7 kWh today`
+  },
+  {
+    name: 'SpectroCoin',
+    slug: 'spectrocoin-cli',
+    package: '@ktmcp-cli/spectrocoin',
+    description: 'Crypto merchant payments API',
+    github: 'https://github.com/ktmcp-cli/spectrocoin',
+    category: 'Finance',
+    terminalExample: `$ spectrocoin --help
+
+✓ spectrocoin CLI v1.0.0
+Usage: spectrocoin [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'Stripe',
+    slug: 'stripe-cli',
+    package: '@ktmcp-cli/stripe',
+    description: 'Payments, customers, subscriptions',
+    github: 'https://github.com/ktmcp-cli/stripe',
+    category: 'Finance',
+    terminalExample: `$ stripe customers list --limit 5
+
+✓ Found 4,821 customers
+cus_abc  john@acme.com   $12,400 LTV
+cus_def  jane@tech.com   $8,200 LTV`
+  },
+  {
+    name: 'Taxamo',
+    slug: 'taxamo-cli',
+    package: '@ktmcp-cli/taxamo',
+    description: 'Global tax compliance and calculation',
+    github: 'https://github.com/ktmcp-cli/taxamo',
+    category: 'Finance',
+    terminalExample: `$ taxamo --help
+
+✓ taxamo CLI v1.0.0
+Usage: taxamo [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'TaxJar',
+    slug: 'taxjar-cli',
+    package: '@ktmcp-cli/taxjar',
+    description: 'Sales tax calculation and reporting',
+    github: 'https://github.com/ktmcp-cli/taxjar',
+    category: 'Finance',
+    terminalExample: `$ taxjar tax calculate \\
+  --to-zip 90210 --amount 100
+
+✓ Tax calculated
+Rate: 10.25%
+Tax: $10.25`
+  },
+  {
+    name: 'Telnyx',
+    slug: 'telnyx-cli',
+    package: '@ktmcp-cli/telnyx',
+    description: 'SMS, calls, and phone numbers API',
+    github: 'https://github.com/ktmcp-cli/telnyx',
+    category: 'Messaging',
+    terminalExample: `$ telnyx sms send \\
+  --from +15550001234 \\
+  --to +15559876543 \\
+  --text "Hello from Telnyx!"
+
+✓ SMS sent (ID: msg_abc123)`
+  },
+  {
+    name: 'Tisane',
+    slug: 'tisane-cli',
+    package: '@ktmcp-cli/tisane',
+    description: 'NLP and content moderation API',
+    github: 'https://github.com/ktmcp-cli/tisane',
+    category: 'Other',
+    terminalExample: `$ tisane analyze \\
+  --text "Sample text to analyze"
+
+✓ Analysis complete
+Language: en
+Sentiment: positive (0.82)`
+  },
+  {
+    name: 'Twilio',
+    slug: 'twilio-cli',
+    package: '@ktmcp-cli/twilio',
+    description: 'SMS, calls, and phone numbers',
+    github: 'https://github.com/ktmcp-cli/twilio',
+    category: 'Messaging',
+    terminalExample: `$ twilio messages send \\
+  --to +15550001234 \\
+  --from +15559998765 \\
+  --body "Hello World!"
+
+✓ Message sent SM abc123xyz`
+  },
+  {
+    name: 'Up Bank',
+    slug: 'upbank-cli',
+    package: '@ktmcp-cli/upbank',
+    description: 'Australian neobank API',
+    github: 'https://github.com/ktmcp-cli/upbank',
+    category: 'Finance',
+    terminalExample: `$ upbank accounts list
+
+✓ Up accounts (2)
+Spending  AU$2,150.00  transaction
+Savers    AU$8,400.00  saver`
+  },
+  {
+    name: 'VAT API',
+    slug: 'vatapi-cli',
+    package: '@ktmcp-cli/vatapi',
+    description: 'European VAT validation and rates',
+    github: 'https://github.com/ktmcp-cli/vatapi',
+    category: 'Finance',
+    terminalExample: `$ vatapi validate --number GB123456789
+
+✓ VAT number valid
+Company: Acme Ltd
+Country: United Kingdom`
+  },
+  {
+    name: 'Velo Payments',
+    slug: 'velopay-cli',
+    package: '@ktmcp-cli/velopay',
+    description: 'Mass payout and disbursement API',
+    github: 'https://github.com/ktmcp-cli/velopay',
+    category: 'Finance',
+    terminalExample: `$ velopay --help
+
+✓ velopay CLI v1.0.0
+Usage: velopay [command]
+
+Commands:
+  auth    Authenticate with API
+  list    List resources
+  get     Get a resource`
+  },
+  {
+    name: 'Viator',
+    slug: 'viator-cli',
+    package: '@ktmcp-cli/viator',
+    description: 'Tours and activities booking API',
+    github: 'https://github.com/ktmcp-cli/viator',
+    category: 'Travel',
+    terminalExample: `$ viator experiences search \\
+  --destination Paris --limit 5
+
+✓ Found 182 experiences
+Eiffel Tower Tour  ★4.9  $42
+Louvre Skip-Line   ★4.8  $55`
+  },
+  {
+    name: 'Vonage SMS',
+    slug: 'vonagesms-cli',
+    package: '@ktmcp-cli/vonagesms',
+    description: 'Send SMS and manage phone numbers',
+    github: 'https://github.com/ktmcp-cli/vonagesms',
+    category: 'Messaging',
+    terminalExample: `$ vonagesms message send \\
+  --to 15550001234 \\
+  --from 15559998765 \\
+  --text "Hello from Vonage!"
+
+✓ Message sent (status: 0)`
+  },
+  {
+    name: 'Vonage Voice',
+    slug: 'vonagevoice-cli',
+    package: '@ktmcp-cli/vonagevoice',
+    description: 'Voice calls and PSTN API',
+    github: 'https://github.com/ktmcp-cli/vonagevoice',
+    category: 'Messaging',
+    terminalExample: `$ vonagevoice calls create \\
+  --to 15550001234 \\
+  --from 15559998765
+
+✓ Call initiated
+ID: call_abc123
+Status: ringing`
+  },
+  {
+    name: 'Xero',
+    slug: 'xero-cli',
+    package: '@ktmcp-cli/xero',
+    description: 'Cloud accounting and invoices API',
+    github: 'https://github.com/ktmcp-cli/xero',
+    category: 'Finance',
+    terminalExample: `$ xero invoices list --status AUTHORISED
+
+✓ Found 18 invoices
+INV-0042  Acme Corp   $2,400  due tomorrow
+INV-0041  Tech Ltd    $1,100  due in 14 days`
+  },
+  {
+    name: 'Yodlee',
+    slug: 'yodlee-cli',
+    package: '@ktmcp-cli/yodlee',
+    description: 'Financial data aggregation API',
+    github: 'https://github.com/ktmcp-cli/yodlee',
+    category: 'Finance',
+    terminalExample: `$ yodlee accounts list
+
+✓ Aggregated accounts (4)
+Chase Checking   $5,200.00
+Vanguard 401k    $88,400.00
+Amex Platinum    -$1,240.00`
   }
 ];
 ---
@@ -714,7 +1413,7 @@ Acme Corp (UK)
         <div class="stats">
           <div class="stats-grid">
             <div class="stat">
-              <div class="stat-number">5</div>
+              <div class="stat-number">53</div>
               <div class="stat-label">CLIs</div>
             </div>
             <div class="stat">
@@ -736,7 +1435,7 @@ Acme Corp (UK)
           <div class="section-header">
             <h2 class="section-title">Available CLIs</h2>
             <p class="section-description">
-              Starting with finance APIs. More coming soon - Stripe, Shopify, and others.
+              53 production-ready CLIs across finance, travel, messaging, productivity, media, IoT, and more.
             </p>
           </div>
 
