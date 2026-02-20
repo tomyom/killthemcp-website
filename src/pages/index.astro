@@ -810,7 +810,7 @@ Amex Platinum    -$1,240.00`
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kill The MCP - Production CLIs for APIs</title>
     <meta name="description" content="Production-ready command-line tools for APIs. No servers, no abstraction layers, just code that works." />
     <style>
@@ -839,6 +839,7 @@ Amex Platinum    -$1,240.00`
         color: var(--terminal-green);
         line-height: 1.6;
         overflow-x: hidden;
+        max-width: 100vw;
       }
 
       /* CRT scanline effect */
@@ -931,7 +932,7 @@ Amex Platinum    -$1,240.00`
       }
 
       .ascii-logo {
-        font-size: clamp(0.5rem, 1.2vw, 0.8rem);
+        font-size: clamp(0.5rem, 1.2vw, 1.1rem);
         line-height: 1;
         color: var(--terminal-green);
         text-shadow: var(--glow);
@@ -1086,12 +1087,6 @@ Amex Platinum    -$1,240.00`
         gap: 2rem;
       }
 
-      @media (min-width: 1400px) {
-        .cli-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-
       .cli-card {
         background: var(--terminal-bg);
         border: 2px solid var(--terminal-green-dim);
@@ -1100,6 +1095,7 @@ Amex Platinum    -$1,240.00`
         display: block;
         transition: all 0.3s;
         position: relative;
+        min-width: 0;
       }
 
       .cli-card:hover {
@@ -1124,6 +1120,8 @@ Amex Platinum    -$1,240.00`
         background: var(--terminal-black);
         border-bottom: 1px solid var(--terminal-green-dim);
         min-height: 220px;
+        min-width: 0;
+        overflow: hidden;
       }
 
       .terminal-output {
@@ -1155,6 +1153,16 @@ Amex Platinum    -$1,240.00`
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
+      }
+
+      @media (min-width: 1400px) {
+        .cli-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
 
       .why-item {
@@ -1440,9 +1448,13 @@ Amex Platinum    -$1,240.00`
         }
 
         .stats::before {
-          left: 1rem;
-          font-size: 0.75rem;
-          top: -1.2rem;
+          left: 0.5rem;
+          font-size: 0.7rem;
+          top: -1.1rem;
+          max-width: calc(100% - 1rem);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         .stats-grid {
@@ -1474,12 +1486,26 @@ Amex Platinum    -$1,240.00`
 
         /* How to use on mobile */
         .how-to-step {
-          padding: 1.5rem;
+          padding: 1.5rem 1rem;
+        }
+
+        .how-to-step::before {
+          left: 0.75rem;
+          font-size: 0.72rem;
+          max-width: calc(100% - 1.5rem);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         .code-block {
-          font-size: 0.75rem;
+          font-size: 0.72rem;
           padding: 1rem;
+          white-space: pre;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          max-width: 100%;
+          word-break: normal;
         }
 
         /* CLI cards on mobile */
@@ -1494,15 +1520,25 @@ Amex Platinum    -$1,240.00`
 
         .cli-card::before {
           font-size: 0.7rem;
+          max-width: calc(100% - 2rem);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         .terminal-window {
           padding: 1rem;
-          min-height: 180px;
+          min-height: 160px;
+          overflow: hidden;
         }
 
         .terminal-output {
-          font-size: 0.7rem;
+          font-size: 0.65rem;
+          white-space: pre;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          max-width: 100%;
+          display: block;
         }
 
         .cli-name {
@@ -1533,6 +1569,15 @@ Amex Platinum    -$1,240.00`
           margin: 4rem 0;
         }
 
+        .quote-section::before {
+          left: 0.5rem;
+          font-size: 0.75rem;
+          max-width: calc(100% - 1rem);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
         .quote-inner {
           flex-direction: column;
           gap: 1.5rem;
@@ -1556,18 +1601,21 @@ Amex Platinum    -$1,240.00`
         /* Navigation on mobile */
         nav {
           font-size: 0.85rem;
+          gap: 0.5rem;
         }
 
         .logo {
-          font-size: 1.25rem;
+          font-size: 1.1rem;
+          flex-shrink: 0;
         }
 
         .nav-links {
-          gap: 1rem;
+          gap: 0.75rem;
+          flex-shrink: 0;
         }
 
         .nav-links a {
-          font-size: 0.8rem;
+          font-size: 0.75rem;
         }
 
         /* Footer on mobile */
@@ -1583,6 +1631,21 @@ Amex Platinum    -$1,240.00`
         .footer-links {
           font-size: 0.8rem;
           gap: 1.5rem;
+        }
+      }
+
+      /* Extra small screens (≤400px) */
+      @media (max-width: 400px) {
+        .nav-links a::before {
+          content: '';
+        }
+
+        .nav-links a {
+          font-size: 0.72rem;
+        }
+
+        .logo {
+          font-size: 1rem;
         }
       }
 

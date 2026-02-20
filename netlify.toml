@@ -46,6 +46,163 @@
   status = 301
   force = true
 
+# Redirects for CLIs not yet on npm - point to homepage until published
+[[redirects]]
+  from = "/ably-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/adyen-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/adyenpayout-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/amadeus-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/chaingateway-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/clicksend-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ebaylogistics-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/elmahio-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/faretrotter-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gsmtasks-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hetras-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impalahotels-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mastercardob-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/personio-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/plaid-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sendgrid-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/shipengine-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/shotstack-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/spectrocoin-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stripe-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/telnyx-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/twilio-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/viator-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vonagesms-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vonagevoice-cli"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yodlee-cli"
+  to = "/"
+  status = 301
+  force = true
+
 # SPA fallback - must be last
 [[redirects]]
   from = "/*"
